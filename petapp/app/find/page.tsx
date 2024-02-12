@@ -1,11 +1,14 @@
 import EmptyState from "@/app/components/EmptyState";
+import ClientOnly from "@/app/components/ClientOnly";
 
 const FindPage = () => {
   return (
-    <EmptyState
-      title="Опи! Няма ме!"
-      subtitle="Тази страница все още не съществува."
-    />
+    <ClientOnly>
+      <EmptyState
+        title="Опи! Няма ме!"
+        subtitle="Тази страница все още не съществува."
+      />
+    </ClientOnly>
   );
 };
 

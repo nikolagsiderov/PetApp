@@ -10,6 +10,7 @@ import BecomeSitterModal from "./components/modals/BecomeSitterModal";
 import SearchModal from "./components/modals/SearchModal";
 import Footer from "./components/footer/Footer";
 import BottomNav from "./components/navbar/BottomNav";
+import ClientOnly from "@/app/components/ClientOnly";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,15 +29,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToasterProvider />
-        <SearchModal />
-        <BecomeSitterModal />
-        <LoginModal />
-        <RegisterModal />
-        <Navbar currentUser={currentUser} />
-        <div className="pb-28 pt-32">{children}</div>
-        <Footer />
-        <BottomNav />
+        <ClientOnly>
+          <ToasterProvider />
+          <SearchModal />
+          <BecomeSitterModal />
+          <LoginModal />
+          <RegisterModal />
+          <Navbar currentUser={currentUser} />
+          <div className="pb-28 pt-32">{children}</div>
+          <Footer />
+          <BottomNav />
+        </ClientOnly>
       </body>
     </html>
   );
