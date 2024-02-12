@@ -14,7 +14,7 @@ import BottomNav from "./components/navbar/BottomNav";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PetApp",
+  title: "Petland.bg",
   description: "Koleto and Jorkata's pet app",
 };
 
