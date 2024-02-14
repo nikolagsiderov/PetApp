@@ -32,7 +32,8 @@ const PetSittingPage = async ({ searchParams }: PetSittingProps) => {
       <Container>
         <div
           className="
-            pt-64
+            pt-36
+            lg:pt-28
             grid 
             grid-cols-1 
             sm:grid-cols-2 

@@ -7,11 +7,10 @@ import qs from "query-string";
 import Avatar from "./Avatar";
 
 interface CategoryBoxProps {
-  icon: IconType;
+  icon?: IconType | null;
   label: string;
   imageSrc?: string;
   selected?: boolean;
-  withIcons?: boolean;
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
@@ -19,7 +18,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   label,
   imageSrc,
   selected,
-  withIcons,
 }) => {
   const router = useRouter();
   const params = useSearchParams();
@@ -54,18 +52,18 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   return (
     <div
       onClick={handleClick}
-      className={`flex flex-col items-center justify-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
+      className={`flex flex-col items-center justify-center gap-1 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
         selected ? "border-b-neutral-800" : "border-transparent"
       }
     ${selected ? "text-neutral-800" : "text-neutral-500"}`}
     >
-      {withIcons && <Icon size={26} />}
-      {!withIcons && (
+      {Icon && <Icon size={26} />}
+      {imageSrc && (
         <Avatar
           src={imageSrc}
           roundedClass="rounded-lg"
-          width={80}
-          height={80}
+          width={50}
+          height={50}
         />
       )}
       <div className="font-medium text-sm -mt-2">{label}</div>
