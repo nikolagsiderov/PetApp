@@ -9,6 +9,7 @@ import getCurrentUser from "./actions/getCurrentUser";
 import Footer from "./components/footer/Footer";
 import BottomNav from "./components/navbar/BottomNav";
 import ClientOnly from "@/app/components/ClientOnly";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default async function RootLayout({
           <Footer />
           <BottomNav />
         </ClientOnly>
+        <Analytics />
       </body>
     </html>
   );
