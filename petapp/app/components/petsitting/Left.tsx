@@ -1,6 +1,10 @@
 "use client";
 
-import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  MarkerF,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 
 interface LeftProps {
@@ -46,16 +50,7 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
           />
           {listings?.map((listing: any) => {
             const listingCoords = { lat: 42.696829, lng: 23.320866 };
-            return (
-              <MarkerF
-                key={listing.id}
-                position={listingCoords}
-                icon={{
-                  url: "/images/dog.png",
-                  scaledSize: new google.maps.Size(50, 50),
-                }}
-              />
-            );
+            return <MarkerF key={listing.id} position={listingCoords} />;
           })}
         </GoogleMap>
       </div>

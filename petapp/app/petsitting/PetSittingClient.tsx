@@ -16,7 +16,7 @@ const PetSittingClient: React.FC<PetSittingClientProps> = ({
   listings,
   currentUser,
 }) => {
-  const [mapView, setMapView] = useState(false);
+  const [mapView, setMapView] = useState(true);
 
   const toggleView = () => {
     setMapView(!mapView);
