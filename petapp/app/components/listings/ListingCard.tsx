@@ -12,6 +12,7 @@ import Button from "../Button";
 import { RiVipDiamondFill, RiVipDiamondLine } from "react-icons/ri";
 
 interface ListingCardProps {
+  horizontal?: boolean;
   data: SafeListing;
   reservation?: Reservation;
   onAction?: (id: string) => void;
@@ -27,6 +28,7 @@ interface IParams {
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({
+  horizontal,
   data,
   reservation,
   onAction,
@@ -78,8 +80,10 @@ const ListingCard: React.FC<ListingCardProps> = ({
       className="col-span-1 cursor-pointer group"
       onClick={() => router.push(`/listings/${data.id}`)}
     >
-      <div className="flex flex-col gap-2 w-full">
-        <div className="aspect-square w-full relative overflow-hidden rounded-xl">
+      <div
+        className={`flex ${horizontal ? "flex-row" : "flex-col"} gap-2 w-full`}
+      >
+        <div className={`aspect-square ${horizontal ? "w-48" : "w-full"}  relative overflow-hidden rounded-xl`}>
           <Image
             alt="Listing"
             src={data.imageSrc}
@@ -102,18 +106,20 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className="font-semibold text-lg">{listingUserName}</div>
-        <div className="font-light text-sm">
-          {location?.label},
-          <span className="font-light"> {location?.region}</span>
-        </div>
-        <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">{price}</div>{" "}
-          {reservation ? (
-            <div className="font-light">лева общо</div>
-          ) : (
-            <div className="font-light">лв/ден</div>
-          )}
+        <div className={``}>
+          <div className="font-semibold text-lg">{listingUserName}</div>
+          <div className="font-light text-sm">
+            {location?.label},
+            <span className="font-light"> {location?.region}</span>
+          </div>
+          <div className="flex flex-row items-center gap-1">
+            <div className="font-semibold">{price}</div>{" "}
+            {reservation ? (
+              <div className="font-light">лева общо</div>
+            ) : (
+              <div className="font-light">лв/ден</div>
+            )}
+          </div>
         </div>
         {onAction && actionLabel && (
           <Button
