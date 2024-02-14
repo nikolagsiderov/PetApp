@@ -1,11 +1,10 @@
 import EmptyState from "@/app/components/EmptyState";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import Container from "@/app/components/Container";
 import ClientOnly from "@/app/components/ClientOnly";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
-import ListingCard from "@/app/components/listings/ListingCard";
 import SearchModal from "../components/modals/SearchModal";
 import BecomeSitterModal from "../components/modals/BecomeSitterModal";
+import PetSittingClient from "./PetSittingClient";
 
 export const dynamic = "force-dynamic";
 
@@ -29,29 +28,7 @@ const PetSittingPage = async ({ searchParams }: PetSittingProps) => {
     <ClientOnly>
       <SearchModal />
       <BecomeSitterModal />
-      <Container>
-        <div
-          className="
-            lg:pt-64 pt-72 pb-20
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4
-            xl:grid-cols-5
-            2xl:grid-cols-6
-            gap-8
-          "
-        >
-          {listings.map((listing: any) => (
-            <ListingCard
-              currentUser={currentUser}
-              key={listing.id}
-              data={listing}
-            />
-          ))}
-        </div>
-      </Container>
+      <PetSittingClient listings={listings} currentUser={currentUser} />
     </ClientOnly>
   );
 };

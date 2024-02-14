@@ -1,86 +1,50 @@
 "use client";
 
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
-import { SafeReservation, SafeUser } from "@/app/types";
-import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
-import ListingCard from "@/app/components/listings/ListingCard";
+import ListView from "./ListView";
+import MapView from "./MapView";
+import { FaMapLocationDot, FaListUl } from "react-icons/fa6";
+import { useState } from "react";
+import { SafeListing, SafeUser } from "../types";
 
 interface PetSittingClientProps {
-  reservations: SafeReservation[];
-  currentUser?: SafeUser | null;
+  listings?: Array<SafeListing> | null | undefined;
+  currentUser?: SafeUser | null | undefined;
 }
 
 const PetSittingClient: React.FC<PetSittingClientProps> = ({
-  reservations,
+  listings,
   currentUser,
 }) => {
-  const router = useRouter();
-  const [deletingId, setDeletingId] = useState("");
+  const [mapView, setMapView] = useState(false);
 
-  const onCancel = useCallback(
-    (id: string) => {
-      setDeletingId(id);
-
-      axios
-        .delete(`/api/reservations/${id}`)
-        .then(() => {
-          toast.success("Резервацията е отменена!");
-          router.refresh();
-        })
-        .catch((error) => {
-          toast.error(error?.response?.data?.error);
-        })
-        .finally(() => {
-          setDeletingId("");
-        });
-    },
-    [router]
-  );
+  const toggleView = () => {
+    setMapView(!mapView);
+  };
 
   return (
     <Container>
-      <div
-        className="
-          max-w-screen-lg 
-          mx-auto
-          mt-24
-        "
-      >
-        <Heading
-          title="Резервации"
-          subtitle="Изминали и планувани резервации"
-        />
+      <div className="right-20 fixed z-10 bottom-20 justify-center items-center">
         <div
-          className="
-          mt-10
-          grid 
-          grid-cols-1 
-          sm:grid-cols-2 
-          md:grid-cols-3 
-          lg:grid-cols-4
-          xl:grid-cols-5
-          2xl:grid-cols-6
-          gap-8
-        "
+          onClick={toggleView}
+          className="cursor-pointer flex flex-row gap-1 justify-center items-center rounded-full hover:opacity-100 opacity-50 transition w-full bg-rose-500 font-light text-md p-4 text-white"
         >
-          {reservations.map((reservation: any) => (
-            <ListingCard
-              key={reservation.id}
-              data={reservation.listing}
-              reservation={reservation}
-              actionId={reservation.id}
-              onAction={onCancel}
-              disabled={deletingId === reservation.id}
-              actionLabel="Отмени"
-              currentUser={currentUser}
-            />
-          ))}
+          {!mapView ? (
+            <div className="flex flex-row justify-center items-center gap-2">
+              <FaMapLocationDot size={32} className="fill-white" />
+              Смени изглед към карта
+            </div>
+          ) : (
+            <div className="flex flex-row justify-center items-center gap-2">
+              <FaListUl size={32} className="fill-white" />
+              Смени изглед към списък
+            </div>
+          )}
         </div>
       </div>
+
+      {!mapView && <ListView listings={listings} currentUser={currentUser} />}
+      {mapView && <MapView listings={listings} currentUser={currentUser} />}
     </Container>
   );
 };
