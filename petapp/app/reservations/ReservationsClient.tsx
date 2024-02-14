@@ -47,7 +47,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
         className="
           max-w-screen-lg 
           mx-auto
-          mt-8
+          lg:pt-24 pt-32 pb-20
         "
       >
         <Heading

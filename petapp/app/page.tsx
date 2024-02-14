@@ -8,7 +8,9 @@ const Home = () => {
     <ClientOnly>
       <BecomeSitterModal />
       <Container>
-        <HomePageClient />
+        <div className="lg:pt-12 pt-28 pb-12 lg:pb-4">
+          <HomePageClient />
+        </div>
       </Container>
     </ClientOnly>
   );
