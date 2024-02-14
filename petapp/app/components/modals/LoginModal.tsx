@@ -41,7 +41,7 @@ const LoginModal = () => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success("Logged in");
+        toast.success("Успешно влезнахте в своя акаунт!");
         router.refresh();
         loginModal.onClose();
       }

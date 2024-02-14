@@ -4,6 +4,7 @@ import getReservations from "@/app/actions/getReservations";
 import EmptyState from "@/app/components/EmptyState";
 import ListingClient from "./ListingClient";
 import ClientOnly from "@/app/components/ClientOnly";
+import BecomeSitterModal from "@/app/components/modals/BecomeSitterModal";
 
 interface IParams {
   listingId?: string;
@@ -24,6 +25,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
 
   return (
     <ClientOnly>
+      <BecomeSitterModal />
       <ListingClient
         listing={listing}
         reservations={reservations}

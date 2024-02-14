@@ -73,7 +73,7 @@ const SearchModal = () => {
 
     const url = qs.stringifyUrl(
       {
-        url: "/",
+        url: "/petsitting",
         query: updatedQuery,
       },
       { skipNull: true }

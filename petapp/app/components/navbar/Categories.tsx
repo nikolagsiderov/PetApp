@@ -54,9 +54,9 @@ const Categories = () => {
   const category = params?.get("category");
   const pathname = usePathname();
 
-  const isMainPage = pathname === "/";
+  const isPetSittingPage = pathname === "/petsitting";
 
-  if (!isMainPage) {
+  if (!isPetSittingPage) {
     return null;
   }
 

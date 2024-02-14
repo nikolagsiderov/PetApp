@@ -9,12 +9,12 @@ import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
 
-interface ReservationsClientProps {
+interface PetSittingClientProps {
   reservations: SafeReservation[];
   currentUser?: SafeUser | null;
 }
 
-const ReservationsClient: React.FC<ReservationsClientProps> = ({
+const PetSittingClient: React.FC<PetSittingClientProps> = ({
   reservations,
   currentUser,
 }) => {
@@ -47,7 +47,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
         className="
           max-w-screen-lg 
           mx-auto
-          mt-8
+          mt-24
         "
       >
         <Heading
@@ -85,4 +85,4 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   );
 };
 
-export default ReservationsClient;
+export default PetSittingClient;

@@ -5,20 +5,20 @@ import { usePathname } from "next/navigation";
 
 const useBottomNavigation = () => {
   const pathname = usePathname();
-  const [isHomeActive, setIsHomeActive] = useState(false);
+  const [isPetSitting, setIsPetSittingActive] = useState(false);
   const [isBuyingActive, setIsBuyingActive] = useState(false);
   const [isFindActive, setIsFindActive] = useState(false);
   const [isLoveActive, setIsLoveActive] = useState(false);
 
   useEffect(() => {
-    setIsHomeActive(false);
+    setIsPetSittingActive(false);
     setIsBuyingActive(false);
     setIsFindActive(false);
     setIsLoveActive(false);
 
     switch (pathname) {
-      case "/":
-        setIsHomeActive(true);
+      case "/petsitting":
+        setIsPetSittingActive(true);
         break;
       case "/buying":
         setIsBuyingActive(true);
@@ -36,7 +36,7 @@ const useBottomNavigation = () => {
   }, [pathname]);
 
   return {
-    isHomeActive,
+    isPetSitting,
     isBuyingActive,
     isFindActive,
     isLoveActive,

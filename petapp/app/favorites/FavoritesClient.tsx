@@ -18,7 +18,7 @@ const FavoritesClient: React.FC<FavoritesClientProps> = ({
         className="
           max-w-screen-lg 
           mx-auto
-          mt-24
+          mt-8
         "
       >
         <Heading title="Запазени обяви" subtitle="Списък със запазени обяви!" />

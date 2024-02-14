@@ -25,7 +25,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({
           <Button
             outline
             label="Премахни всички филтри"
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/petsitting")}
           />
         )}
       </div>

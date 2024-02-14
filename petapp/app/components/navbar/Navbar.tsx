@@ -8,12 +8,20 @@ import NavigationMenu from "./NavigationMenu";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 import { SafeUser } from "@/app/types";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
+  const params = usePathname();
+
+  const currentPathIsBuying = params?.includes("buying");
+  const currentPathIsFind = params?.includes("find");
+  const currentPathIsLove = params?.includes("love");
+  const currentPathIsPetSitting = params?.includes("petsitting");
+
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <Header />
@@ -25,13 +33,15 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
               <NavigationMenu />
               <UserMenu currentUser={currentUser} />
             </div>
-            <div className="flex flex-row items-center justify-center gap-3 md:gap-0">
-              <Search />
-            </div>
+            {currentPathIsPetSitting && (
+              <div className="flex flex-row items-center justify-center gap-3 md:gap-0">
+                <Search />
+              </div>
+            )}
           </div>
         </Container>
       </div>
-      <Categories />
+      {currentPathIsPetSitting && <Categories />}
     </div>
   );
 };

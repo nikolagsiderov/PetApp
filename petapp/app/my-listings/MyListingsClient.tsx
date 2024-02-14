@@ -47,7 +47,7 @@ const MyListingsClient: React.FC<MyListingsClientProps> = ({
         className="
           max-w-screen-lg 
           mx-auto
-          mt-24
+          mt-8
         "
       >
         <Heading title="Мойте обяви" subtitle="Списък с мойте обяви" />

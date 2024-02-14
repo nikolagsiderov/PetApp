@@ -6,8 +6,6 @@ import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
-import BecomeSitterModal from "./components/modals/BecomeSitterModal";
-import SearchModal from "./components/modals/SearchModal";
 import Footer from "./components/footer/Footer";
 import BottomNav from "./components/navbar/BottomNav";
 import ClientOnly from "@/app/components/ClientOnly";
@@ -31,8 +29,6 @@ export default async function RootLayout({
       <body className={inter.className}>
         <ClientOnly>
           <ToasterProvider />
-          <SearchModal />
-          <BecomeSitterModal />
           <LoginModal />
           <RegisterModal />
           <Navbar currentUser={currentUser} />
