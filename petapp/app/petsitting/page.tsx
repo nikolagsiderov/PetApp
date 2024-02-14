@@ -7,6 +7,8 @@ import ListingCard from "@/app/components/listings/ListingCard";
 import SearchModal from "../components/modals/SearchModal";
 import BecomeSitterModal from "../components/modals/BecomeSitterModal";
 
+export const dynamic = "force-dynamic";
+
 interface PetSittingProps {
   searchParams: IListingsParams;
 }
