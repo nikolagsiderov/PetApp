@@ -10,7 +10,7 @@ import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
 
 interface MyListingsClientProps {
-  listings: SafeListing[];
+  listings: Array<SafeListing> | null | undefined | any;
   currentUser?: SafeUser | null;
 }
 
