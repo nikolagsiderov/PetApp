@@ -15,11 +15,18 @@ export default async function getFavoriteListings() {
           in: [...(currentUser.favouriteIds || [])],
         },
       },
+      include: {
+        user: true,
+      },
     });
 
     const safeFavorites = favorites.map((favorite) => ({
       ...favorite,
       createdAt: favorite.createdAt.toString(),
+      user: {
+        ...favorite.user,
+        createdAt: favorite.user.createdAt.toISOString(),
+      },
     }));
 
     return safeFavorites;

@@ -65,8 +65,9 @@ const MapView: React.FC<MapViewProps> = ({ listings, currentUser }) => {
           {listings?.map((listing: any) => (
             <ListingCard
               currentUser={currentUser}
-              key={listing.id}
+              key={listing.id}  
               data={listing}
+              listingUserName={listing.user.name}
             />
           ))}
         </div>

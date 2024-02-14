@@ -73,6 +73,7 @@ const MyListingsClient: React.FC<MyListingsClientProps> = ({
               disabled={deletingId === listing.id}
               actionLabel="Изтрий обява"
               currentUser={currentUser}
+              listingUserName={listing.user.name}
             />
           ))}
         </div>

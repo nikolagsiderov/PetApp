@@ -10,7 +10,7 @@ import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
 
 interface ReservationsClientProps {
-  reservations: SafeReservation[];
+  reservations: Array<SafeReservation> | null | undefined | any;
   currentUser?: SafeUser | null;
 }
 
@@ -71,6 +71,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             <ListingCard
               key={reservation.id}
               data={reservation.listing}
+              listingUserName={reservation.user.name}
               reservation={reservation}
               actionId={reservation.id}
               onAction={onCancel}

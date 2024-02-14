@@ -28,6 +28,7 @@ const ListView: React.FC<ListViewProps> = ({ listings, currentUser }) => {
           currentUser={currentUser}
           key={listing.id}
           data={listing}
+          listingUserName={listing.user.name}
         />
       ))}
     </div>

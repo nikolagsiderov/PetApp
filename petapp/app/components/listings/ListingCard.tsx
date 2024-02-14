@@ -19,6 +19,11 @@ interface ListingCardProps {
   actionLabel?: string;
   actionId?: string;
   currentUser?: SafeUser | null;
+  listingUserName: string;
+}
+
+interface IParams {
+  listingId?: string;
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({
@@ -29,6 +34,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   actionLabel,
   actionId = "",
   currentUser,
+  listingUserName,
 }) => {
   const router = useRouter();
   const { getByValue } = useTowns();
@@ -96,11 +102,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className="font-semibold text-lg">
-          {data.title.length > 15
-            ? data.title.substring(0, 15) + "..."
-            : data.title}
-        </div>
+        <div className="font-semibold text-lg">{listingUserName}</div>
         <div className="font-light text-sm">
           {location?.label},
           <span className="font-light"> {location?.region}</span>

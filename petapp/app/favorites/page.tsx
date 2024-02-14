@@ -11,7 +11,7 @@ const ListingPage = async () => {
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <EmptyState
+        <EmptyState 
           title="Нямате запазени обяви"
           subtitle="Изглежда, че не сте запазили обяви."
         />

@@ -4,7 +4,7 @@ import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
 
 interface FavoritesClientProps {
-  listings: SafeListing[];
+  listings: Array<SafeListing> | null | undefined | any;
   currentUser?: SafeUser | null;
 }
 
@@ -40,6 +40,7 @@ const FavoritesClient: React.FC<FavoritesClientProps> = ({
               currentUser={currentUser}
               key={listing.id}
               data={listing}
+              listingUserName={listing.user.name}
             />
           ))}
         </div>

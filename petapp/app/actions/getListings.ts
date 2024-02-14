@@ -47,6 +47,9 @@ export default async function getListings(params: IListingsParams) {
 
     const listings = await prisma.listing.findMany({
       where: query,
+      include: {
+        user: true,
+      },
       orderBy: {
         createdAt: "desc",
       },
@@ -55,6 +58,10 @@ export default async function getListings(params: IListingsParams) {
     const safeListings = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
+      user: {
+        ...listing.user,
+        createdAt: listing.user.createdAt.toISOString(),
+      },
     }));
 
     return safeListings;
