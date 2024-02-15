@@ -77,8 +77,17 @@ const ListingClient: React.FC<ListingClientProps> = ({
         setDateRange(initialDateRange);
         router.push("/reservations");
       })
-      .catch(() => {
-        toast.error("Нещо се обърка.");
+      .catch((error) => {
+        if (
+          error &&
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Нещо се обърка.");
+        }
       })
       .finally(() => {
         setIsLoading(false);

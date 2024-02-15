@@ -15,7 +15,6 @@ export async function POST(request: Request) {
   }
 
   const params: IParams = { userId: currentUser.id };
-
   const userHasAlreadyListed = await hasUserAlreadyListed(params);
 
   if (userHasAlreadyListed) {

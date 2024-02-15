@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import hasUserAlreadyReservedListing from "@/app/actions/hasAlreadyReservedListing";
+
+interface IParams {
+  listingId?: string;
+  userId?: string;
+}
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
@@ -15,6 +21,18 @@ export async function POST(request: Request) {
 
   if (!listingId || !startDate || !endDate || !totalPrice) {
     return NextResponse.error();
+  }
+
+  const params: IParams = { listingId: listingId, userId: currentUser.id };
+  const userHasAlreadyReservedListing = await hasUserAlreadyReservedListing(
+    params
+  );
+
+  if (userHasAlreadyReservedListing) {
+    return NextResponse.json(
+      { message: "Вие вече сте резервирали." },
+      { status: 406 }
+    );
   }
 
   const listingAndReservation = await prisma.listing.update({
