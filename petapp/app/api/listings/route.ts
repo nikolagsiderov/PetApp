@@ -1,12 +1,28 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import hasUserAlreadyListed from "@/app/actions/hasUserAlreadyListed";
+
+interface IParams {
+  userId?: string;
+}
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return NextResponse.error();
+  }
+
+  const params: IParams = { userId: currentUser.id };
+
+  const userHasAlreadyListed = await hasUserAlreadyListed(params);
+
+  if (userHasAlreadyListed) {
+    return NextResponse.json(
+      { message: "Вие вече имате публикувана обява." },
+      { status: 406 }
+    );
   }
 
   const body = await request.json();

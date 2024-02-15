@@ -82,8 +82,17 @@ const BecomeSitterModal = () => {
         setStep(STEPS.CATEGORY);
         becomeSitterModal.onClose();
       })
-      .catch(() => {
-        toast.error("Нещо се обърка.");
+      .catch((error) => {
+        if (
+          error &&
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Нещо се обърка.");
+        }
       })
       .finally(() => {
         setIsLoading(false);
@@ -180,7 +189,10 @@ const BecomeSitterModal = () => {
   if (step === STEPS.PRICE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="Цена" subtitle="Каква е цената на твоята обявя на ден" />
+        <Heading
+          title="Цена"
+          subtitle="Каква е цената на твоята обявя на ден"
+        />
         <Input
           id="price"
           label="Цена"
