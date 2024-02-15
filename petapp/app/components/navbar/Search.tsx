@@ -12,34 +12,34 @@ const Search = () => {
   const params = useSearchParams();
   const { getByValue } = useTowns();
 
-  const locationValue = params?.get("locationValue");
+  const locationCode = params?.get("locationCode");
   const startDate = params?.get("startDate");
   const endDate = params?.get("endDate");
   const category = params?.get("category");
 
   const locationLabel = useMemo(() => {
-    if (locationValue) {
-      return getByValue(locationValue as string)?.label;
+    if (locationCode) {
+      return getByValue(locationCode as string)?.label;
     }
 
     return "Къде";
-  }, [locationValue, getByValue]);
+  }, [locationCode, getByValue]);
 
   const locationSecondaryLabel = useMemo(() => {
-    if (locationValue) {
+    if (locationCode) {
       return null;
     }
 
     return "Избери локация";
-  }, [locationValue]);
+  }, [locationCode]);
 
   const locationLabelIsTextLarger = useMemo(() => {
-    if (locationValue) {
+    if (locationCode) {
       return "text-sm";
     }
 
     return "text-xs";
-  }, [locationValue]);
+  }, [locationCode]);
 
   const durationLabel = useMemo(() => {
     if (startDate && endDate) {

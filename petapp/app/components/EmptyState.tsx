@@ -11,8 +11,8 @@ interface EmptyStateProps {
 }
 
 const EmptyState: React.FC<EmptyStateProps> = ({
-  title = "Няма обяви отворащи на вашите критерии",
-  subtitle = "Променете вашите критерии и филтри",
+  title = "Няма резултати",
+  subtitle = "Не са намерени резултати отговарящи на вашите критерии",
   showReset,
 }) => {
   const router = useRouter();

@@ -19,7 +19,11 @@ const PetSittingPage = async ({ searchParams }: PetSittingProps) => {
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <EmptyState showReset />
+        <SearchModal />
+        <BecomeSitterModal />
+        <div className="lg:pt-32 pt-48">
+          <EmptyState showReset />
+        </div>
       </ClientOnly>
     );
   }

@@ -8,7 +8,6 @@ import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import TownSelect from "../inputs/TownSelect";
-import dynamic from "next/dynamic";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
 import axios from "axios";
@@ -43,7 +42,6 @@ const BecomeSitterModal = () => {
       location: null,
       imageSrc: "",
       price: 1,
-      title: "",
       description: "",
     },
   });
@@ -51,14 +49,6 @@ const BecomeSitterModal = () => {
   const category = watch("category");
   const location = watch("location");
   const imageSrc = watch("imageSrc");
-
-  const Map = useMemo(
-    () =>
-      dynamic(() => import("../Map"), {
-        ssr: false,
-      }),
-    [location]
-  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -148,7 +138,6 @@ const BecomeSitterModal = () => {
           value={location}
           onChange={(value) => setCustomValue("location", value)}
         />
-        <Map center={location?.latlng} />
       </div>
     );
   }
@@ -176,15 +165,6 @@ const BecomeSitterModal = () => {
           subtitle="Добави кратко описание за себе си!"
         />
         <Input
-          id="title"
-          label="Заглавие на обявата"
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required
-        />
-        <hr />
-        <Input
           id="description"
           label="Описание"
           disabled={isLoading}
@@ -203,7 +183,6 @@ const BecomeSitterModal = () => {
         <Input
           id="price"
           label="Цена"
-          formatPrice
           type="number"
           disabled={isLoading}
           register={register}

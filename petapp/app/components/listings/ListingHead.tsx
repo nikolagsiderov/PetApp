@@ -7,30 +7,25 @@ import Heading from "../Heading";
 import HeartButton from "../HeartButton";
 
 interface ListingHeadProps {
-  title: string;
-  locationValue: string;
+  locationCode: string;
   imageSrc: string;
   id: string;
   currentUser?: SafeUser | null;
 }
 
 const ListingHead: React.FC<ListingHeadProps> = ({
-  title,
-  locationValue,
+  locationCode,
   imageSrc,
   id,
   currentUser,
 }) => {
   const { getByValue } = useTowns();
 
-  const location = getByValue(locationValue);
+  const location = getByValue(locationCode);
 
   return (
     <>
-      <Heading
-        title={title}
-        subtitle={`${location?.label}, ${location?.region}`}
-      />
+      <Heading subtitle={`${location?.label}, ${location?.region}`} />
       <div
         className="
           w-full

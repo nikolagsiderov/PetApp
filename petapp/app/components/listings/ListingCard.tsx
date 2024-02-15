@@ -41,7 +41,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const router = useRouter();
   const { getByValue } = useTowns();
 
-  const location = getByValue(data.locationValue);
+  const location = getByValue(data.locationCode);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -83,7 +83,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
       <div
         className={`flex ${horizontal ? "flex-row" : "flex-col"} gap-2 w-full`}
       >
-        <div className={`aspect-square ${horizontal ? "w-48" : "w-full"}  relative overflow-hidden rounded-xl`}>
+        <div
+          className={`aspect-square ${
+            horizontal ? "w-48" : "w-full"
+          }  relative overflow-hidden rounded-xl`}
+        >
           <Image
             alt="Listing"
             src={data.imageSrc}

@@ -16,7 +16,7 @@ model User {
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
-  favouriteIds   String[]  @db.ObjectId
+  favoriteIds    String[]  @db.ObjectId
 
   accounts     Account[]
   listings     Listing[]
@@ -43,19 +43,17 @@ model Account {
 }
 
 model Listing {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  description   String
-  imageSrc      String
-  createdAt     DateTime @default(now())
-  category      String
-  guestCount    Int
-  locationValue String
-  userId        String   @db.ObjectId
-  price         Int
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  description  String
+  imageSrc     String
+  createdAt    DateTime @default(now())
+  category     String
+  locationCode String
+  userId       String   @db.ObjectId
+  price        Float
 
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  revervations Reservation[]
+  reservations Reservation[]
 }
 
 model Reservation {
@@ -64,8 +62,8 @@ model Reservation {
   listingId  String   @db.ObjectId
   startDate  DateTime
   endDate    DateTime
-  totalPrice Int
-  createAt   DateTime @default(now())
+  totalPrice Float
+  createdAt  DateTime @default(now())
 
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)

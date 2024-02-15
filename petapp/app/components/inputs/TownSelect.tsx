@@ -4,7 +4,7 @@ import useTowns from "@/app/hooks/useTowns";
 import Select from "react-select";
 
 export type TownSelectValue = {
-  value: string;
+  code: string;
   label: string;
   region: string;
   latlng?: number[];
