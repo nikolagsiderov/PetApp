@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import hasUserAlreadyReservedListing from "@/app/actions/hasAlreadyReservedListing";
+import { hasUserAlreadyReservedListing, isUserTryingToReserveOwnListing } from "@/app/actions/reservationsValidations";
 
 interface IParams {
   listingId?: string;
@@ -24,9 +24,19 @@ export async function POST(request: Request) {
   }
 
   const params: IParams = { listingId: listingId, userId: currentUser.id };
+  const userIsTryingToReserveOwnListing = await isUserTryingToReserveOwnListing(
+    params
+  );
   const userHasAlreadyReservedListing = await hasUserAlreadyReservedListing(
     params
   );
+
+  if (userIsTryingToReserveOwnListing) {
+    return NextResponse.json(
+      { message: "Не може да резервирате собствена обява." },
+      { status: 406 }
+    );
+  }
 
   if (userHasAlreadyReservedListing) {
     return NextResponse.json(

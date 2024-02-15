@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -41,7 +40,7 @@ const LoginModal = () => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success("Успешно влезнахте в своя акаунт!");
+        toast.success("Добре дошли!");
         router.refresh();
         loginModal.onClose();
       }

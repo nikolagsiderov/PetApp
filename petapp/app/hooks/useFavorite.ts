@@ -36,9 +36,14 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
           request = () => axios.post(`/api/favorites/${listingId}`);
         }
 
-        await request();
+        const response = await request();
         router.refresh();
-        toast.success("Добавено в любими!");
+
+        if (response.data.created) {
+          toast.success(response.data.message);
+        } else if (response.data.deleted) {
+          toast.error(response.data.message);
+        }
       } catch (error) {
         toast.error("Нещо се обърка.");
       }

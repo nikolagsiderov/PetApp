@@ -32,7 +32,10 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     },
   });
 
-  return NextResponse.json(user);
+  return NextResponse.json(
+    { message: "Добавено в любими!", created: true },
+    { status: 200 }
+  );
 }
 
 export async function DELETE(
@@ -64,5 +67,8 @@ export async function DELETE(
     },
   });
 
-  return NextResponse.json(user);
+  return NextResponse.json(
+    { message: "Премахнато от любими.", deleted: true },
+    { status: 200 }
+  );
 }
