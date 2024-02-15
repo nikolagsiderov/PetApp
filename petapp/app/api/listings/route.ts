@@ -12,13 +12,18 @@ export async function POST(request: Request) {
   const body = await request.json();
   const { description, imageSrc, category, location, price } = body;
 
+  const toFixedNumber = (num: number) => {
+    const pow = Math.pow(10, 2);
+    return Math.round(num * pow) / pow;
+  };
+
   const listing = await prisma.listing.create({
     data: {
       description,
       imageSrc,
       category,
       locationCode: location.code,
-      price: parseInt(price, 2),
+      price: toFixedNumber(parseFloat(price)),
       userId: currentUser.id,
     },
   });

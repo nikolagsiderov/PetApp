@@ -109,8 +109,8 @@ const BecomeSitterModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Какъв домашен любимец отглеждате"
-        subtitle="Избери категория"
+        title="Избери домашен любимец"
+        subtitle="Какъв домашен любимец е добре дошъл при вас"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vw] overflow-y-auto">
         {categories.map((item) => (
@@ -131,8 +131,8 @@ const BecomeSitterModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Къде е вашето място"
-          subtitle="Помогнете на хората да ви намират лесно!"
+          title="Къде се намирате"
+          subtitle="Помогнете на хората да ви намират лесно"
         />
         <TownSelect
           value={location}
@@ -147,7 +147,7 @@ const BecomeSitterModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Качи снимка"
-          subtitle="Добави твоя снимка към обявата!"
+          subtitle="Добави снимка към твоята обява"
         />
         <ImageUpload
           value={imageSrc}
@@ -162,11 +162,12 @@ const BecomeSitterModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Описание"
-          subtitle="Добави кратко описание за себе си!"
+          subtitle="Добави кратко описание за себе си и твоята обява"
         />
         <Input
           id="description"
           label="Описание"
+          textarea
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -179,7 +180,7 @@ const BecomeSitterModal = () => {
   if (step === STEPS.PRICE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="Цена" subtitle="Добави цена" />
+        <Heading title="Цена" subtitle="Каква е цената на твоята обявя на ден" />
         <Input
           id="price"
           label="Цена"
@@ -195,7 +196,7 @@ const BecomeSitterModal = () => {
 
   return (
     <Modal
-      title="Стани гледач!"
+      title="Стани гледач"
       isOpen={becomeSitterModal.isOpen}
       onClose={becomeSitterModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
