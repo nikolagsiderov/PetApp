@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  GoogleMap,
-  MarkerF,
-  useJsApiLoader,
-} from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 
 interface LeftProps {
@@ -40,6 +36,7 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
           mapContainerClassName="w-full h-[36rem] rounded-2xl"
           center={coordinates}
           zoom={7}
+          options={{ streetViewControl: false }}
         >
           <MarkerF
             position={userLocation}
