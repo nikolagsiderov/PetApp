@@ -10,19 +10,19 @@ const Footer = () => {
         <Container>
           <div className="flex flex-row overflow-hidden justify-between items-start gap-2 md:text-xs">
             <div>© 2024 Petland.bg</div>
-            <div>·</div>
+            <div className="font-black">·</div>
             <div className="hover:underline cursor-pointer">
               Условия за ползване
             </div>
-            <div>·</div>
+            <div className="font-black">·</div>
             <div className="hover:underline cursor-pointer">
               Политика за поверителност и бисквитки
             </div>
-            <div>·</div>
+            <div className="font-black">·</div>
             <div className="hover:underline cursor-pointer">
               Свържете се с нас
             </div>
-            <div>·</div>
+            <div className="font-black">·</div>
             <div className="flex flex-row overflow-hidden justify-center items-center gap-2">
               <div>Последвай ни в социалните мрежи</div>
               <div className="cursor-pointer">

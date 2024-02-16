@@ -24,7 +24,7 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
     });
   };
 
-  const coordinates = { lat: 42.5587, lng: 25.2058 };
+  const coordinates = { lat: 42.7587, lng: 25.2058 };
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCPASOspif-cElvaiBWxsuLwAHKq9YyKbs",
   });
@@ -35,8 +35,12 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
         <GoogleMap
           mapContainerClassName="w-full h-[36rem] rounded-2xl"
           center={coordinates}
-          zoom={7}
-          options={{ streetViewControl: false }}
+          zoom={7.2}
+          options={{
+            streetViewControl: false,
+            gestureHandling: "cooperative",
+            minZoom: 7.2,
+          }}
         >
           <MarkerF
             position={userLocation}

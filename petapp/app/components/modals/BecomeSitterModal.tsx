@@ -121,7 +121,7 @@ const BecomeSitterModal = () => {
         title="Избери домашен любимец"
         subtitle="Какъв домашен любимец е добре дошъл при вас"
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50svh] overflow-y-auto">
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
