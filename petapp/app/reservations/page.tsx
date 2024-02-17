@@ -3,6 +3,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getReservations from "@/app/actions/getReservations";
 import ReservationsClient from "./ReservationsClient";
 import ClientOnly from "@/app/components/ClientOnly";
+import PostSitterReviewModal from "../components/modals/PostSitterReviewModal";
 
 const ReservationsPage = async () => {
   const currentUser = await getCurrentUser();
@@ -30,6 +31,7 @@ const ReservationsPage = async () => {
 
   return (
     <ClientOnly>
+      <PostSitterReviewModal />
       <ReservationsClient
         reservations={reservations}
         currentUser={currentUser}

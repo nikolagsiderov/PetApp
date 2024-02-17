@@ -114,11 +114,22 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div
           className={!horizontal ? "grid grid-cols-12" : "grid grid-rows-12"}
         >
-          <div className={!horizontal ? "col-span-9" : "row-span-10"}>
+          <div
+            className={
+              !horizontal
+                ? !reservation
+                  ? "col-span-9"
+                  : "col-span-12"
+                : "row-span-10"
+            }
+          >
             <div className="font-semibold text-lg">{listingUserName}</div>
             <div className="font-light text-sm">
               {location?.label},
               <span className="font-light"> {location?.region}</span>
+            </div>
+            <div className="font-light text-neutral-500">
+              {reservation && reservationDate}
             </div>
             <div className="flex flex-row items-center gap-1">
               <div className="font-semibold">{price}</div>{" "}
@@ -132,7 +143,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
           <div
             className={
               !horizontal
-                ? "col-span-3 flex flex-row top-0 text-lg font-semibold"
+                ? !reservation
+                  ? "col-span-3 flex flex-row top-0 text-lg font-semibold"
+                  : "hidden"
                 : "row-span-2 flex flex-row top-0 text-lg font-semibold"
             }
           >
