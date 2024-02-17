@@ -12,8 +12,10 @@ import toast from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { useRouter } from "next/navigation";
 
 const RegisterModal = () => {
+  const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +39,20 @@ const RegisterModal = () => {
       .post("api/register", data)
       .then(() => {
         registerModal.onClose();
+
+        signIn("credentials", {
+          ...data,
+          redirect: false,
+        }).then((callback) => {
+          if (callback?.ok) {
+            toast.success("Добре дошли!");
+            router.refresh();
+          }
+
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
+        });
       })
       .catch((error) => {
         toast.error("Грешка при регистрацията");
