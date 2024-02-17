@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer";
 import BottomNav from "./components/navbar/BottomNav";
 import ClientOnly from "@/app/components/ClientOnly";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
           <BottomNav />
         </ClientOnly>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
