@@ -42,8 +42,6 @@ const PostSitterReviewModal = () => {
 
   const communicationScore = watch("communicationScore");
   const accuracyScore = watch("accuracyScore");
-  const publicMessage = watch("publicMessage");
-  const privateMessage = watch("privateMessage");
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -68,30 +66,33 @@ const PostSitterReviewModal = () => {
 
     setIsLoading(true);
 
-    axios
-      .post("/api/review", data)
-      .then(() => {
-        toast.success("Успешно публикувахте вашият отзив!");
-        router.refresh();
-        reset();
-        setStep(STEPS.COMMUNICATION);
-        postSitterReviewModal.onClose();
-      })
-      .catch((error) => {
-        if (
-          error &&
-          error.response &&
-          error.response.data &&
-          error.response.data.message
-        ) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("Нещо се обърка.");
-        }
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // Remove the line below when axios implementation is done
+    setIsLoading(false);
+
+    // axios
+    //   .post("/api/review", data)
+    //   .then(() => {
+    //     toast.success("Успешно публикувахте вашият отзив!");
+    //     router.refresh();
+    //     reset();
+    //     setStep(STEPS.COMMUNICATION);
+    //     postSitterReviewModal.onClose();
+    //   })
+    //   .catch((error) => {
+    //     if (
+    //       error &&
+    //       error.response &&
+    //       error.response.data &&
+    //       error.response.data.message
+    //     ) {
+    //       toast.error(error.response.data.message);
+    //     } else {
+    //       toast.error("Нещо се обърка.");
+    //     }
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
   };
 
   const actionLabel = useMemo(() => {
