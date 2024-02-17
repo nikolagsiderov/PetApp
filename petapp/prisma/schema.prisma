@@ -18,9 +18,14 @@ model User {
   updatedAt      DateTime  @updatedAt
   favoriteIds    String[]  @db.ObjectId
 
-  accounts     Account[]
-  listings     Listing[]
-  reservations Reservation[]
+  accounts         Account[]
+  listings         Listing[]
+  reservations     Reservation[]
+  exchanges        Exchange[]
+  searches         Search[]
+  findings         Finding[]
+  partnerRequests  PartnerRequest[]
+  partnerResponses PartnerResponse[]
 }
 
 model Account {
@@ -67,4 +72,67 @@ model Reservation {
 
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+}
+
+model Exchange {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  description    String
+  imageSrc       String
+  createdAt      DateTime @default(now())
+  category       String
+  locationCode   String
+  userId         String   @db.ObjectId
+  customerUserId String   @db.ObjectId
+  price          Float
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Search {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  description  String
+  imageSrc     String
+  createdAt    DateTime @default(now())
+  category     String
+  locationCode String
+  userId       String   @db.ObjectId
+  found        Boolean
+  foundAt      DateTime
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  findings Finding[]
+}
+
+model Finding {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  searchId  String   @db.ObjectId
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  search Search @relation(fields: [searchId], references: [id], onDelete: Cascade)
+}
+
+model PartnerRequest {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  description  String
+  imageSrc     String
+  createdAt    DateTime @default(now())
+  category     String
+  locationCode String
+  userId       String   @db.ObjectId
+  match        Boolean
+
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  responses PartnerResponse[]
+}
+
+model PartnerResponse {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  requestId String   @db.ObjectId
+  createdAt DateTime @default(now())
+
+  user    User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  request PartnerRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
 }
