@@ -31,7 +31,7 @@ const ReservationsPage = async () => {
 
   return (
     <ClientOnly>
-      <PostSitterReviewModal />
+      {/* <PostSitterReviewModal /> */}
       <ReservationsClient
         reservations={reservations}
         currentUser={currentUser}
