@@ -10,6 +10,7 @@ import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
 import { RiVipDiamondFill, RiVipDiamondLine } from "react-icons/ri";
+import { FaStar } from "react-icons/fa6";
 
 interface ListingCardProps {
   horizontal?: boolean;
@@ -110,19 +111,32 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className={``}>
-          <div className="font-semibold text-lg">{listingUserName}</div>
-          <div className="font-light text-sm">
-            {location?.label},
-            <span className="font-light"> {location?.region}</span>
+        <div
+          className={!horizontal ? "grid grid-cols-12" : "grid grid-rows-12"}
+        >
+          <div className={!horizontal ? "col-span-9" : "row-span-10"}>
+            <div className="font-semibold text-lg">{listingUserName}</div>
+            <div className="font-light text-sm">
+              {location?.label},
+              <span className="font-light"> {location?.region}</span>
+            </div>
+            <div className="flex flex-row items-center gap-1">
+              <div className="font-semibold">{price}</div>{" "}
+              {reservation ? (
+                <div className="font-light">лева общо</div>
+              ) : (
+                <div className="font-light">лв/ден</div>
+              )}
+            </div>
           </div>
-          <div className="flex flex-row items-center gap-1">
-            <div className="font-semibold">{price}</div>{" "}
-            {reservation ? (
-              <div className="font-light">лева общо</div>
-            ) : (
-              <div className="font-light">лв/ден</div>
-            )}
+          <div
+            className={
+              !horizontal
+                ? "col-span-3 flex flex-row top-0 text-lg font-semibold"
+                : "row-span-2 flex flex-row top-0 text-lg font-semibold"
+            }
+          >
+            <FaStar size={16} className="fill-amber-400" /> 4.5/5
           </div>
         </div>
         {onAction && actionLabel && (
