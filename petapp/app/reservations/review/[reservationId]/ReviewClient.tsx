@@ -155,7 +155,7 @@ const ReviewClient: React.FC<ReviewClientProps> = ({
               required
             />
           </div>
-          <div className="flex flex-col lg:mx-96 mx-32">
+          <div className="flex flex-col lg:mx-96 mx-24">
             <Button label="Публикувай отзив" onClick={() => {}} />
           </div>
         </div>
