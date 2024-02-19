@@ -8,7 +8,6 @@ import { SafeReservation, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
-import usePostSitterReviewModal from "../hooks/usePostSitterReviewModal";
 
 interface ReservationsClientProps {
   reservations: Array<SafeReservation> | null | undefined | any;
@@ -21,7 +20,6 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
 }) => {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
-  const postSitterReviewModal = usePostSitterReviewModal();
 
   const onCancel = useCallback(
     (id: string) => {
@@ -45,9 +43,9 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
 
   const onSubmitFeedback = useCallback(
     (id: string) => {
-      postSitterReviewModal.onOpen();
+      router.push(`/reservations/review/${id}`);
     },
-    [postSitterReviewModal]
+    [router]
   );
 
   return (

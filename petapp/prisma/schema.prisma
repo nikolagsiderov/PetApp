@@ -26,6 +26,7 @@ model User {
   findings         Finding[]
   partnerRequests  PartnerRequest[]
   partnerResponses PartnerResponse[]
+  reviews          Review[]
 }
 
 model Account {
@@ -59,6 +60,7 @@ model Listing {
 
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
+  reviews      Review[]
 }
 
 model Reservation {
@@ -70,8 +72,25 @@ model Reservation {
   totalPrice Float
   createdAt  DateTime @default(now())
 
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  reviews Review[]
+}
+
+model Review {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String   @db.ObjectId
+  listingId          String   @db.ObjectId
+  reservationId      String   @db.ObjectId
+  createdAt          DateTime @default(now())
+  communicationScore Int
+  accuracyScore      Int
+  publicMessage      String
+  privateMessage     String
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing     Listing     @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  reservation Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
 }
 
 model Exchange {

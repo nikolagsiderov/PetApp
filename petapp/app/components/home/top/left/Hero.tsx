@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="text-4xl lg:text-6xl leading-tight lg:leading-tight">
         Добре дошли в
         <br />
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-amber-400 font-black">
+        <h1 className="text-rose-500 font-black tracking-tighter">
           Petland.bg
         </h1>
       </div>

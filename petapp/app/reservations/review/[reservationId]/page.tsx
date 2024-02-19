@@ -1,10 +1,10 @@
 import EmptyState from "@/app/components/EmptyState";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getReservations from "@/app/actions/getReservations";
-import ReservationsClient from "./ReservationsClient";
+import ReviewClient from "./ReviewClient";
 import ClientOnly from "@/app/components/ClientOnly";
 
-const ReservationsPage = async () => {
+const ReviewPage = async () => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -30,7 +30,7 @@ const ReservationsPage = async () => {
 
   return (
     <ClientOnly>
-      <ReservationsClient
+      <ReviewClient
         reservations={reservations}
         currentUser={currentUser}
       />
@@ -38,4 +38,4 @@ const ReservationsPage = async () => {
   );
 };
 
-export default ReservationsPage;
+export default ReviewPage;
