@@ -59,7 +59,7 @@ const LoginModal = () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Добре дошли в [име на сайта]"
+        title="Добре дошли в Petland.bg"
         subtitle="Влез в своя акаунт!"
       />
       <Input

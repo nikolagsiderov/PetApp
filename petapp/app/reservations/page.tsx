@@ -15,9 +15,18 @@ const ReservationsPage = async () => {
     );
   }
 
-  const reservations = await getReservations({ userId: currentUser.id });
+  const upcomingReservations = await getReservations({
+    userId: currentUser.id,
+    upcoming: true,
+  });
+  const pastReservations = await getReservations({
+    userId: currentUser.id,
+    past: true,
+  });
 
-  if (reservations.length === 0) {
+  console.log(pastReservations.length);
+
+  if (upcomingReservations.length === 0 && pastReservations.length === 0) {
     return (
       <ClientOnly>
         <EmptyState
@@ -31,7 +40,8 @@ const ReservationsPage = async () => {
   return (
     <ClientOnly>
       <ReservationsClient
-        reservations={reservations}
+        upcomingReservations={upcomingReservations}
+        pastReservations={pastReservations}
         currentUser={currentUser}
       />
     </ClientOnly>

@@ -11,9 +11,10 @@ import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
+  hasUserAlreadyListed?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
+const Navbar: React.FC<NavbarProps> = ({ currentUser, hasUserAlreadyListed }) => {
   const params = usePathname();
 
   const currentPathIsBuying = params?.includes("buying");
@@ -29,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
             <div className="flex flex-row items-center justify-between gap-0">
               <Logo />
               <NavigationMenu />
-              <UserMenu currentUser={currentUser} />
+              <UserMenu currentUser={currentUser} hasUserAlreadyListed={hasUserAlreadyListed} />
             </div>
             {currentPathIsPetSitting && (
               <div className="flex flex-row items-center justify-center gap-3 md:gap-0">

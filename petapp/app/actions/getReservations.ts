@@ -4,11 +4,13 @@ interface IParams {
   listingId?: string;
   userId?: string;
   authorId?: string;
+  upcoming?: boolean;
+  past?: boolean;
 }
 
 export default async function getReservations(params: IParams) {
   try {
-    const { listingId, userId, authorId } = params;
+    const { listingId, userId, authorId, upcoming, past } = params;
 
     const query: any = {};
 
@@ -22,6 +24,15 @@ export default async function getReservations(params: IParams) {
 
     if (authorId) {
       query.listing = { userId: authorId };
+    }
+
+    if (upcoming) {
+      query.startDate = { lte: new Date() };
+      query.endDate = { gte: new Date() };
+    }
+
+    if (past) {
+      query.endDate = { lte: new Date() };
     }
 
     const reservations = await prisma.reservation.findMany({

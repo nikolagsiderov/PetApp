@@ -13,9 +13,13 @@ import { useRouter } from "next/navigation";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
+  hasUserAlreadyListed?: boolean;
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+const UserMenu: React.FC<UserMenuProps> = ({
+  currentUser,
+  hasUserAlreadyListed,
+}) => {
   const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -37,12 +41,21 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   return (
     <div className="relative">
       <div className="flex flex-row items-center text-center gap-3">
-        <div
-          onClick={becomeSitter}
-          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
-        >
-          Стани гледач
-        </div>
+        {hasUserAlreadyListed ? (
+          <div
+            onClick={() => router.push("/my-listings")}
+            className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+          >
+            Моите обяви
+          </div>
+        ) : (
+          <div
+            onClick={becomeSitter}
+            className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+          >
+            Стани гледач
+          </div>
+        )}
         <div
           onClick={toggleOpen}
           className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer shadow-lg hover:shadow-xl transition"
@@ -60,27 +73,42 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => router.push("/reservations")}
-                  label="Моите резервации"
-                />
-                <MenuItem
                   onClick={() => router.push("/favorites")}
-                  label="Запазени обяви"
+                  label="Запазени"
                 />
                 <MenuItem
-                  onClick={() => router.push("/my-listings")}
-                  label="Мойте обяви"
+                  onClick={() => router.push("/reservations")}
+                  label="Резервации"
                 />
                 <MenuItem
-                  onClick={becomeSitterModal.onOpen}
-                  label="Стани гледач"
+                  onClick={() => router.push("/reservations")}
+                  label="Още история"
                 />
                 <hr />
-                <MenuItem onClick={() => signOut()} label="Излез" />
+                <MenuItem
+                  onClick={() => router.push("/my-listings")}
+                  label="Моите обяви"
+                  fontWeightClass={"font-md"}
+                />
+                <MenuItem
+                  onClick={() => signOut()}
+                  label="Профил"
+                  fontWeightClass={"font-md"}
+                />
+                <hr />
+                <MenuItem
+                  onClick={() => signOut()}
+                  label="Излез"
+                  fontWeightClass={"font-light"}
+                />
               </>
             ) : (
               <>
-                <MenuItem onClick={loginModal.onOpen} label="Влез" />
+                <MenuItem
+                  onClick={loginModal.onOpen}
+                  label="Влез"
+                  fontWeightClass={"font-md"}
+                />
                 <MenuItem
                   onClick={registerModal.onOpen}
                   label="Регистрирай се"
