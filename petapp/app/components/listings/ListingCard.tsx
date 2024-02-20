@@ -135,7 +135,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
               {reservation && reservationDate}
             </div>
             <div className="flex flex-row items-center gap-1">
-              <div className="font-semibold">{price}</div>{" "}
+              <div className="font-semibold">{price.toFixed(2)}</div>{" "}
               {reservation ? (
                 <div className="font-light">лева общо</div>
               ) : (
