@@ -4,7 +4,7 @@ interface IParams {
   userId?: string;
 }
 
-export default async function hasUserAlreadyListed(params: IParams) {
+async function hasUserAlreadyListed(params: IParams) {
   try {
     const { userId } = params;
 
@@ -23,3 +23,5 @@ export default async function hasUserAlreadyListed(params: IParams) {
     throw new Error(error);
   }
 }
+
+export { hasUserAlreadyListed };

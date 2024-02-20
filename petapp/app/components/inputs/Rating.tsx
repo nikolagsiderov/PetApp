@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FaStar } from "react-icons/fa6";
 
-export default function Rating() {
-  const [rateValue, setRateValue] = useState(0);
-
-  const handleSubmit = (value: number) => {
-    setRateValue(value);
-  };
+interface RatingProps {
+  value: number;
+  onChange: (value: number) => void;
+}
+const Rating: React.FC<RatingProps> = ({ onChange, value }) => {
+  const handleSubmit = useCallback(
+    (value: number) => {
+      onChange(value);
+    },
+    [onChange]
+  );
 
   return (
     <div className="flex flex-row-reverse justify-end gap-4">
-      {[5, 4, 3, 2, 1].map((value) => {
+      {[5, 4, 3, 2, 1].map((v) => {
         return (
           <div
-            key={value}
-            onClick={() => handleSubmit(value)}
+            key={v}
+            onClick={() => handleSubmit(v)}
             className={`peer cursor-pointer transition-all ${
-              value <= rateValue
+              v <= value
                 ? "text-amber-500"
                 : "text-amber-300 hover:text-amber-500 peer-hover:text-amber-500"
             }`}
@@ -27,4 +32,6 @@ export default function Rating() {
       })}
     </div>
   );
-}
+};
+
+export default Rating;

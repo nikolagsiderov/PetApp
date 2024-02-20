@@ -95,21 +95,25 @@ const ListingCard: React.FC<ListingCardProps> = ({
             className="object-cover h-full w-full group-hover:scale-110 transition"
             fill
           />
-          <div className="absolute top-3 left-3">
-            <RiVipDiamondLine
-              size={28}
-              className="fill-white absolute -top-[2px] -left-[2px]"
-            />
-            <RiVipDiamondFill size={24} className="fill-amber-400" />
-          </div>
+          {!reservation && (
+            <div className="absolute top-3 left-3">
+              <RiVipDiamondLine
+                size={28}
+                className="fill-white absolute -top-[2px] -left-[2px]"
+              />
+              <RiVipDiamondFill size={24} className="fill-amber-400" />
+            </div>
+          )}
           <div className="absolute bottom-3 left-3">
             <span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
               {data.category}
             </span>
           </div>
-          <div className="absolute top-3 right-3">
-            <HeartButton listingId={data.id} currentUser={currentUser} />
-          </div>
+          {!reservation && (
+            <div className="absolute top-3 right-3">
+              <HeartButton listingId={data.id} currentUser={currentUser} />
+            </div>
+          )}
         </div>
         <div
           className={!horizontal ? "grid grid-cols-12" : "grid grid-rows-12"}

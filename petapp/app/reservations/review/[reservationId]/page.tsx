@@ -1,11 +1,16 @@
 import EmptyState from "@/app/components/EmptyState";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import getReservations from "@/app/actions/reservations/getReservations";
 import ReviewClient from "./ReviewClient";
 import ClientOnly from "@/app/components/ClientOnly";
+import getReservationById from "@/app/actions/reservations/getReservationById";
 
-const ReviewPage = async () => {
+interface IParams {
+  reservationId?: string;
+}
+
+const ReviewPage = async ({ params }: { params: IParams }) => {
   const currentUser = await getCurrentUser();
+  const reservation = await getReservationById(params);
 
   if (!currentUser) {
     return (
@@ -15,14 +20,12 @@ const ReviewPage = async () => {
     );
   }
 
-  const reservations = await getReservations({ userId: currentUser.id });
-
-  if (reservations.length === 0) {
+  if (!reservation) {
     return (
       <ClientOnly>
         <EmptyState
-          title="Няма намерени резервации"
-          subtitle="Изглежда, че не сте направили резервации."
+          title="Няма намерена резервация"
+          subtitle="Изглежда, че не тази резервация не съществува."
         />
       </ClientOnly>
     );
@@ -30,10 +33,7 @@ const ReviewPage = async () => {
 
   return (
     <ClientOnly>
-      <ReviewClient
-        reservations={reservations}
-        currentUser={currentUser}
-      />
+      <ReviewClient reservation={reservation} />
     </ClientOnly>
   );
 };

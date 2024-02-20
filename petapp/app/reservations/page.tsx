@@ -24,8 +24,6 @@ const ReservationsPage = async () => {
     past: true,
   });
 
-  console.log(pastReservations.length);
-
   if (upcomingReservations.length === 0 && pastReservations.length === 0) {
     return (
       <ClientOnly>

@@ -11,7 +11,7 @@ import BottomNav from "./components/navbar/BottomNav";
 import ClientOnly from "@/app/components/ClientOnly";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import hasUserAlreadyListed from "./actions/listings/hasUserAlreadyListed";
+import { hasUserAlreadyListed } from "./actions/listings/listingsValidations";
 
 const inter = Inter({ subsets: ["latin"] });
 

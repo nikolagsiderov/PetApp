@@ -2,7 +2,7 @@
 
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SafeReservation, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
@@ -10,20 +10,14 @@ import Container from "@/app/components/Container";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/app/components/inputs/Input";
 import Button from "@/app/components/Button";
-import { FaStar } from "react-icons/fa6";
 import Rating from "@/app/components/inputs/Rating";
 
 interface ReviewClientProps {
-  reservations: Array<SafeReservation> | null | undefined | any;
-  currentUser?: SafeUser | null;
+  reservation?: SafeReservation | null | undefined | any;
 }
 
-const ReviewClient: React.FC<ReviewClientProps> = ({
-  reservations,
-  currentUser,
-}) => {
+const ReviewClient: React.FC<ReviewClientProps> = ({ reservation }) => {
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -35,6 +29,8 @@ const ReviewClient: React.FC<ReviewClientProps> = ({
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
+      listingId: reservation?.listingId,
+      reservationId: reservation?.id,
       communicationScore: 0,
       accuracyScore: 0,
       publicMessage: "",
@@ -56,33 +52,28 @@ const ReviewClient: React.FC<ReviewClientProps> = ({
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    // Remove the line below when axios implementation is done
-    setIsLoading(false);
-
-    // axios
-    //   .post("/api/review", data)
-    //   .then(() => {
-    //     toast.success("Успешно публикувахте вашият отзив!");
-    //     router.refresh();
-    //     reset();
-    //     setStep(STEPS.COMMUNICATION);
-    //     postSitterReviewModal.onClose();
-    //   })
-    //   .catch((error) => {
-    //     if (
-    //       error &&
-    //       error.response &&
-    //       error.response.data &&
-    //       error.response.data.message
-    //     ) {
-    //       toast.error(error.response.data.message);
-    //     } else {
-    //       toast.error("Нещо се обърка.");
-    //     }
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
+    axios
+      .post("/api/reservations/review", data)
+      .then(() => {
+        router.push("/reservations");
+        toast.success("Вашият отзив е успешно публикуван!");
+        reset();
+      })
+      .catch((error) => {
+        if (
+          error &&
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Нещо се обърка.");
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -113,7 +104,10 @@ const ReviewClient: React.FC<ReviewClientProps> = ({
               subtitle="Тук трябва да се поясни какво се означава тази оценка..."
               textSizeClass={"text-sm"}
             />
-            <Rating />
+            <Rating
+              value={communicationScore}
+              onChange={(value) => setCustomValue("communicationScore", value)}
+            />
           </div>
           <div className="flex flex-col gap-8">
             <Heading
@@ -121,7 +115,10 @@ const ReviewClient: React.FC<ReviewClientProps> = ({
               subtitle="Тук трябва да се поясни какво се означава тази оценка..."
               textSizeClass={"text-sm"}
             />
-            <Rating />
+            <Rating
+              value={accuracyScore}
+              onChange={(value) => setCustomValue("accuracyScore", value)}
+            />
           </div>
           <div className="flex flex-col gap-8">
             <Heading
@@ -155,8 +152,14 @@ const ReviewClient: React.FC<ReviewClientProps> = ({
               required
             />
           </div>
-          <div className="flex flex-col lg:mx-96 mx-24">
-            <Button label="Публикувай отзив" onClick={() => {}} />
+          <div className="flex flex-col lg:items-end items-center">
+            <div className="w-64">
+              <Button
+                label="Публикувай отзив"
+                onClick={handleSubmit(onSubmit)}
+                small
+              />
+            </div>
           </div>
         </div>
       </div>

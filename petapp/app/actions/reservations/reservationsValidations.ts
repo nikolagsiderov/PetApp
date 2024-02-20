@@ -47,4 +47,30 @@ async function isUserTryingToReserveOwnListing(params: IParams) {
   }
 }
 
-export { hasUserAlreadyReservedListing, isUserTryingToReserveOwnListing };
+interface IReviewParams {
+  userId?: string;
+  reservationId?: string;
+}
+
+async function hasUserAlreadyReviewed(params: IReviewParams) {
+  try {
+    const { userId, reservationId } = params;
+
+    const review = await prisma.review.findFirst({
+      where: {
+        reservationId: reservationId,
+        userId: userId,
+      },
+    });
+
+    if (review) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+export { hasUserAlreadyReservedListing, isUserTryingToReserveOwnListing, hasUserAlreadyReviewed };
