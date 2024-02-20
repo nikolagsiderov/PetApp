@@ -44,6 +44,7 @@ export default async function getReservations(params: IParams) {
           },
         },
         user: true,
+        reviews: true,
       },
       orderBy: {
         createdAt: "desc",

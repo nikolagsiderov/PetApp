@@ -1,8 +1,7 @@
 "use client";
 
 import useTowns from "@/app/hooks/useTowns";
-import { SafeListing, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { format } from "date-fns";
@@ -15,7 +14,7 @@ import { FaStar } from "react-icons/fa6";
 interface ListingCardProps {
   horizontal?: boolean;
   data: SafeListing;
-  reservation?: Reservation;
+  reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
@@ -156,7 +155,20 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <FaStar size={16} className="fill-amber-400" /> 4.5/5
           </div>
         </div>
-        {onAction && actionLabel && (
+        {reservation &&
+          reservation.reviews.filter(
+            (review) => review.userId === currentUser?.id
+          ).length <= 0 &&
+          onAction &&
+          actionLabel && (
+            <Button
+              disabled={disabled}
+              small
+              label={actionLabel}
+              onClick={handleCancel}
+            />
+          )}
+        {!reservation && onAction && actionLabel && (
           <Button
             disabled={disabled}
             small
