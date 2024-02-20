@@ -1,14 +1,21 @@
 "use client";
 
+import { SafeUser } from "@/app/types";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 
 interface LeftProps {
   listings?: any;
+  currentUser?: SafeUser | null;
 }
 
-const Left: React.FC<LeftProps> = ({ listings }) => {
+const Left: React.FC<LeftProps> = ({ listings, currentUser }) => {
   const [userLocation, setUserLocation] = useState<any>();
+
+  const currentUserImageSrc: string =
+    currentUser && currentUser.image
+      ? currentUser.image!
+      : "/images/user-location.png";
 
   useEffect(() => {
     getUserLocation();
@@ -44,13 +51,24 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
           <MarkerF
             position={userLocation}
             icon={{
-              url: "/images/user-location.png",
+              url: currentUserImageSrc,
               scaledSize: new google.maps.Size(50, 50),
             }}
           />
           {listings?.map((listing: any) => {
             const listingCoords = { lat: 42.696829, lng: 23.320866 };
-            return <MarkerF key={listing.id} position={listingCoords} />;
+            return (
+              <MarkerF
+                icon={{
+                  url: "/images/white box.png",
+                  scaledSize: new google.maps.Size(60, 45),
+                }}
+                key={listing.id}
+                position={listingCoords}
+                label={listing.price.toFixed(2)}
+                onClick={() => alert("test")}
+              ></MarkerF>
+            );
           })}
         </GoogleMap>
       </div>

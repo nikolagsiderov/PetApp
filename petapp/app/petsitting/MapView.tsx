@@ -12,7 +12,7 @@ interface MapViewProps {
 const MapView: React.FC<MapViewProps> = ({ listings, currentUser }) => {
   return (
     <div className="pt-64 gap-8 lg:grid lg:grid-cols-3">
-      <Left listings={listings} />
+      <Left listings={listings} currentUser={currentUser} />
       <Right listings={listings} currentUser={currentUser} />
     </div>
   );
