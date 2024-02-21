@@ -1,7 +1,8 @@
 "use client";
 
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useState, useEffect, useCallback } from "react";
 
 interface LeftProps {
   listings?: any;
@@ -9,6 +10,7 @@ interface LeftProps {
 
 const Left: React.FC<LeftProps> = ({ listings }) => {
   const [userLocation, setUserLocation] = useState<any>(null);
+  const router = useRouter();
 
   useEffect(() => {
     getUserLocation();
@@ -21,6 +23,10 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
         lng: pos.coords.longitude,
       });
     });
+  };
+
+  const handleMapSelect = (listingId: string) => {
+    router.push(`/listings/${listingId}`);
   };
 
   const centerCoords = { lat: 42.7587, lng: 25.2058 };
@@ -61,7 +67,7 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
                     fontSize: "15px",
                     fontWeight: "bold",
                   }}
-                  onClick={() => alert("test")}
+                  onClick={() => handleMapSelect(listing.id)}
                 ></MarkerF>
                 {/* <Circle
                   center={{
