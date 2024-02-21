@@ -36,7 +36,7 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
   });
 
   return isLoaded ? (
-    <div className="lg:col-span-2 lg:z-10 lg:relative mb-12 lg:mb-0">
+    <div className="lg:col-span-2 lg:relative mb-12 lg:mb-0">
       <div className="lg:sticky lg:top-[16rem]">
         <GoogleMap
           mapContainerClassName="w-full h-[36rem] rounded-2xl"
@@ -69,20 +69,6 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
                   }}
                   onClick={() => handleMapSelect(listing.id)}
                 ></MarkerF>
-                {/* <Circle
-                  center={{
-                    lat: listing.lat + 0.001,
-                    lng: listing.lng - 0.001,
-                  }}
-                  radius={200}
-                  options={{
-                    strokeColor: "#fff",
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: "#fff",
-                    fillOpacity: 0.6,
-                  }}
-                /> */}
               </div>
             );
           })}
