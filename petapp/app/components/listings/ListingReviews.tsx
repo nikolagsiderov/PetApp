@@ -20,6 +20,7 @@ const ListingReviews: React.FC<ListingReviewsProps> = ({ reviews }) => {
           <div
             className="
             text-xl
+            font-semibold
             flex 
             flex-col 
             items-center
@@ -35,16 +36,6 @@ const ListingReviews: React.FC<ListingReviewsProps> = ({ reviews }) => {
               <FaStarHalfAlt size={32} className="fill-amber-500" />
             </div>
             <div>от 58 отзива</div>
-          </div>
-          <div
-            className="
-      text-xl font-semibold flex flex-row gap-2"
-          >
-            <HiChatBubbleBottomCenterText
-              size={28}
-              className="fill-neutral-800"
-            />
-            Отзиви
           </div>
           {reviews.map((review: SafeReview) => (
             <div key={review.id} className="mb-4">
