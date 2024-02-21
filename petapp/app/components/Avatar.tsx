@@ -19,7 +19,7 @@ const Avatar: React.FC<AvatarProps> = ({
     <Image
       className={roundedClass ? roundedClass : "rounded-full"}
       height={height ? height : 30}
-      width={width ? width : "30"}
+      width={width ? width : 30}
       alt="Avatar"
       src={src || "/images/placeholder.jpg"}
     />

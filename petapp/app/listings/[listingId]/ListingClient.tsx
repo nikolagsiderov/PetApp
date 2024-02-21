@@ -18,6 +18,9 @@ import { categories } from "@/app/components/navbar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
+import useTowns from "@/app/hooks/useTowns";
+import ListingReviews from "@/app/components/listings/ListingReviews";
+import ListingMap from "@/app/components/listings/ListingMap";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -42,6 +45,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 }) => {
   const loginModal = useLoginModal();
   const router = useRouter();
+  const { getByValue } = useTowns();
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
@@ -61,6 +65,16 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const category = useMemo(() => {
     return categories.find((items) => items.label === listing.category);
   }, [listing.category]);
+
+  const address = useMemo(() => {
+    const town = getByValue(listing.address.split(",")[1].trim());
+
+    if (town) {
+      return `${town.localName}, България`;
+    } else {
+      return "България";
+    }
+  }, [getByValue, listing.address]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
@@ -125,44 +139,47 @@ const ListingClient: React.FC<ListingClientProps> = ({
         <div className="flex flex-col gap-6">
           <ListingHead
             imageSrc={listing.imageSrc}
-            locationCode={listing.locationCode}
+            address={address}
             id={listing.id}
             currentUser={currentUser}
           />
           <div
             className="
-              grid 
-              grid-cols-1 
-              md:grid-cols-7 
-              md:gap-10 
-              mt-6
+              grid
+              grid-cols-1
+              md:grid-cols-7
+              md:gap-10
+              mt-4
             "
           >
             <ListingInfo
               user={listing.user}
               category={category}
               description={listing.description}
-              reviews={reviews}
             />
             <div
               className="
-                order-first 
-                mb-10 
-                md:order-last 
+                order-first
+                mb-8
+                md:order-last
                 md:col-span-3
               "
             >
-              <ListingReservation
-                price={listing.price}
-                totalPrice={totalPrice}
-                onChangeDate={(value) => setDateRange(value)}
-                dateRange={dateRange}
-                onSubmit={onCreateReservation}
-                disabled={isLoading}
-                disabledDates={disabledDates}
-              />
+              <div className="lg:sticky lg:top-[8rem]">
+                <ListingReservation
+                  price={listing.price}
+                  totalPrice={totalPrice}
+                  onChangeDate={(value) => setDateRange(value)}
+                  dateRange={dateRange}
+                  onSubmit={onCreateReservation}
+                  disabled={isLoading}
+                  disabledDates={disabledDates}
+                />
+              </div>
             </div>
           </div>
+          <ListingReviews reviews={reviews} />
+          <ListingMap listing={listing} address={address} />
         </div>
       </div>
     </Container>

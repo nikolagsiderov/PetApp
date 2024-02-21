@@ -8,8 +8,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import useSearchModal from "@/app/hooks/useSearchModal";
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
-import TownSelect, { TownSelectValue } from "../inputs/TownSelect";
 import Heading from "../Heading";
+import TownSelect, { TownSelectValue } from "../inputs/TownSelect";
 
 enum STEPS {
   LOCATION = 0,
@@ -23,7 +23,7 @@ const SearchModal = () => {
 
   const [step, setStep] = useState(STEPS.LOCATION);
 
-  const [location, setLocation] = useState<TownSelectValue>();
+  const [townValue, setTownValue] = useState<TownSelectValue>();
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
@@ -51,7 +51,7 @@ const SearchModal = () => {
 
     const updatedQuery: any = {
       ...currentQuery,
-      locationCode: location?.code,
+      address: townValue?.name,
     };
 
     if (dateRange.startDate) {
@@ -73,7 +73,7 @@ const SearchModal = () => {
     setStep(STEPS.LOCATION);
     searchModal.onClose();
     router.push(url);
-  }, [step, searchModal, location, router, dateRange, onNext, params]);
+  }, [step, searchModal, townValue, router, dateRange, onNext, params]);
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.DATE) {
@@ -98,8 +98,8 @@ const SearchModal = () => {
         subtitle="Къде се намира вашия домашен любимец?"
       />
       <TownSelect
-        value={location}
-        onChange={(value) => setLocation(value as TownSelectValue)}
+        value={townValue}
+        onChange={(value) => setTownValue(value as TownSelectValue)}
       />
     </div>
   );

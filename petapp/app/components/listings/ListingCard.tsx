@@ -1,6 +1,5 @@
 "use client";
 
-import useTowns from "@/app/hooks/useTowns";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -10,11 +9,12 @@ import HeartButton from "../HeartButton";
 import Button from "../Button";
 import { RiVipDiamondFill, RiVipDiamondLine } from "react-icons/ri";
 import { FaStar } from "react-icons/fa6";
+import useTowns from "@/app/hooks/useTowns";
 
 interface ListingCardProps {
   horizontal?: boolean;
   data: SafeListing;
-  reservation?: SafeReservation;
+  reservation?: SafeReservation | null;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
@@ -41,9 +41,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const router = useRouter();
   const { getByValue } = useTowns();
 
-  const location = getByValue(data.locationCode);
-
-  const handleCancel = useCallback(
+  const handleAction = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
 
@@ -74,6 +72,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
     return `${format(start, "PP")} - ${format(end, "PP")}`;
   }, [reservation]);
+
+  const address = useMemo(() => {
+    const town = getByValue(data.address.split(",")[1].trim());
+
+    if (town) {
+      return `${town.localName}, България`;
+    } else {
+      return "България";
+    }
+  }, [getByValue, data.address]);
 
   return (
     <div
@@ -127,10 +135,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             }
           >
             <div className="font-semibold text-lg">{listingUserName}</div>
-            <div className="font-light text-sm">
-              {location?.label},
-              <span className="font-light"> {location?.region}</span>
-            </div>
+            <div className="font-light text-sm">{address}</div>
             <div className="font-light text-neutral-500">
               {reservation && reservationDate}
             </div>
@@ -155,25 +160,20 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <FaStar size={16} className="fill-amber-400" /> 4.5/5
           </div>
         </div>
-        {reservation &&
-          reservation.reviews.filter(
-            (review) => review.userId === currentUser?.id
-          ).length <= 0 &&
-          onAction &&
-          actionLabel && (
-            <Button
-              disabled={disabled}
-              small
-              label={actionLabel}
-              onClick={handleCancel}
-            />
-          )}
+        {reservation && onAction && actionLabel && (
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleAction}
+          />
+        )}
         {!reservation && onAction && actionLabel && (
           <Button
             disabled={disabled}
             small
             label={actionLabel}
-            onClick={handleCancel}
+            onClick={handleAction}
           />
         )}
       </div>

@@ -4,13 +4,13 @@ export interface IListingsParams {
   userId?: string;
   startDate?: string;
   endDate?: string;
-  locationCode?: string;
+  address?: string;
   category?: string;
 }
 
 export default async function getListings(params: IListingsParams) {
   try {
-    const { userId, locationCode, startDate, endDate, category } = params;
+    const { userId, address, startDate, endDate, category } = params;
 
     let query: any = {};
 
@@ -22,8 +22,8 @@ export default async function getListings(params: IListingsParams) {
       query.category = category;
     }
 
-    if (locationCode) {
-      query.locationCode = locationCode;
+    if (address) {
+      query.address = { contains: address };
     }
 
     if (startDate && endDate) {

@@ -4,11 +4,9 @@ import { IconType } from "react-icons";
 import { SafeReview, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
-import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
 
 interface ListingInfoProps {
   user: SafeUser;
-  reviews?: SafeReview[] | null | undefined;
   description: string;
   category:
     | {
@@ -21,7 +19,6 @@ interface ListingInfoProps {
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
   user,
-  reviews,
   description,
   category,
 }) => {
@@ -63,31 +60,10 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       <hr />
       <div
         className="
-      text-lg font-light text-neutral-500"
+      text-lg font-light text-neutral-800 whitespace-pre-wrap"
       >
         {description}
       </div>
-      {reviews && (
-        <div className="flex flex-col gap-8">
-          <hr />
-          <div
-            className="
-      text-xl font-semibold flex flex-row gap-2"
-          >
-            <HiChatBubbleBottomCenterText size={28} className="fill-neutral-800" />
-            Отзиви
-          </div>
-          {reviews.map((review: SafeReview) => (
-            <div
-              key={review.id}
-              className="
-      text-lg font-light text-neutral-500"
-            >
-              {review.user.name} | {review.publicMessage}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

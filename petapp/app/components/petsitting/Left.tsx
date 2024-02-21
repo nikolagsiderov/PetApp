@@ -1,21 +1,14 @@
 "use client";
 
-import { SafeUser } from "@/app/types";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 
 interface LeftProps {
   listings?: any;
-  currentUser?: SafeUser | null;
 }
 
-const Left: React.FC<LeftProps> = ({ listings, currentUser }) => {
-  const [userLocation, setUserLocation] = useState<any>();
-
-  const currentUserImageSrc: string =
-    currentUser && currentUser.image
-      ? currentUser.image!
-      : "/images/user-location.png";
+const Left: React.FC<LeftProps> = ({ listings }) => {
+  const [userLocation, setUserLocation] = useState<any>(null);
 
   useEffect(() => {
     getUserLocation();
@@ -30,9 +23,10 @@ const Left: React.FC<LeftProps> = ({ listings, currentUser }) => {
     });
   };
 
-  const coordinates = { lat: 42.7587, lng: 25.2058 };
+  const centerCoords = { lat: 42.7587, lng: 25.2058 };
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCPASOspif-cElvaiBWxsuLwAHKq9YyKbs",
+    libraries: ["places"],
   });
 
   return isLoaded ? (
@@ -40,34 +34,50 @@ const Left: React.FC<LeftProps> = ({ listings, currentUser }) => {
       <div className="lg:sticky lg:top-[16rem]">
         <GoogleMap
           mapContainerClassName="w-full h-[36rem] rounded-2xl"
-          center={coordinates}
-          zoom={7.2}
+          center={userLocation || centerCoords}
+          zoom={userLocation ? 13 : 7.2}
           options={{
             streetViewControl: false,
             gestureHandling: "cooperative",
             minZoom: 7.2,
           }}
         >
-          <MarkerF
-            position={userLocation}
-            icon={{
-              url: currentUserImageSrc,
-              scaledSize: new google.maps.Size(50, 50),
-            }}
-          />
+          <MarkerF position={userLocation} />
           {listings?.map((listing: any) => {
-            const listingCoords = { lat: 42.696829, lng: 23.320866 };
             return (
-              <MarkerF
-                icon={{
-                  url: "/images/white box.png",
-                  scaledSize: new google.maps.Size(60, 45),
-                }}
-                key={listing.id}
-                position={listingCoords}
-                label={listing.price.toFixed(2)}
-                onClick={() => alert("test")}
-              ></MarkerF>
+              <div key={listing.id}>
+                <MarkerF
+                  icon={{
+                    url: "/images/white box.png",
+                    scaledSize: new google.maps.Size(60, 45),
+                  }}
+                  position={{
+                    lat: listing.lat + 0.001,
+                    lng: listing.lng - 0.001,
+                  }}
+                  label={{
+                    text: listing.price.toFixed(2),
+                    color: "black",
+                    fontSize: "15px",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => alert("test")}
+                ></MarkerF>
+                {/* <Circle
+                  center={{
+                    lat: listing.lat + 0.001,
+                    lng: listing.lng - 0.001,
+                  }}
+                  radius={200}
+                  options={{
+                    strokeColor: "#fff",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#fff",
+                    fillOpacity: 0.6,
+                  }}
+                /> */}
+              </div>
             );
           })}
         </GoogleMap>

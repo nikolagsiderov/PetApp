@@ -1,53 +1,19 @@
-const towns = [
-  {
-    code: "1000",
-    label: "София",
-    region: "София-град",
-    latlng: [42.698334, 23.319941],
-  },
-  {
-    code: "4000",
-    label: "Пловдив",
-    region: "Пловдив",
-    latlng: [42.698334, 23.319941],
-  },
-  {
-    code: "9000",
-    label: "Варна",
-    region: "Варна",
-    latlng: [42.698334, 23.319941],
-  },
-  {
-    code: "8000",
-    label: "Бургас",
-    region: "Бургас",
-    latlng: [42.698334, 23.319941],
-  },
-  {
-    code: "6000",
-    label: "Стара Загора",
-    region: "Стара Загора",
-    latlng: [42.698334, 23.319941],
-  },
-  {
-    code: "6300",
-    label: "Хасково",
-    region: "Хасково",
-    latlng: [42.698334, 23.319941],
-  },
-  {
-    code: "6343",
-    label: "Минерални бани",
-    region: "Хасково",
-    latlng: [42.698334, 23.319941],
-  },
-];
+import towns from "../libs/towns";
 
 const useTowns = () => {
-  const getAll = () => towns;
+  const getAll = () =>
+    towns.data.map((town) => {
+      return {
+        localName: town.localName,
+        localRegion: town.localRegion,
+        name: town.name,
+        region: town.region,
+        label: town.localName,
+      };
+    });
 
-  const getByValue = (code: string) => {
-    return towns.find((item) => item.code === code);
+  const getByValue = (name: string) => {
+    return towns.data.find((item) => item.name === name);
   };
 
   return {

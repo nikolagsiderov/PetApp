@@ -76,7 +76,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
         </div>
       </div>
       <div
-        className="justify-center cursor-pointer text-sm text-neutral-500 flex flex-row gap-2"
+        className="justify-center cursor-pointer lg:text-sm text-xs text-neutral-500 flex flex-row gap-2"
         onClick={() => {}}
       >
         <IoMdFlag size={20} />

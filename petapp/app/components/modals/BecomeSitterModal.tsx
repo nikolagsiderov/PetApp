@@ -7,12 +7,12 @@ import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import TownSelect from "../inputs/TownSelect";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import LocationInput from "../inputs/LocationInput";
 
 enum STEPS {
   CATEGORY = 0,
@@ -143,9 +143,11 @@ const BecomeSitterModal = () => {
           title="Къде се намирате"
           subtitle="Помогнете на хората да ви намират лесно"
         />
-        <TownSelect
-          value={location}
-          onChange={(value) => setCustomValue("location", value)}
+        <LocationInput
+          locationValue={location}
+          onChange={(locationValue) =>
+            setCustomValue("location", locationValue)
+          }
         />
       </div>
     );

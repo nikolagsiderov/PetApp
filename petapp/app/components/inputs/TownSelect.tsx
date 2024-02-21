@@ -4,10 +4,11 @@ import useTowns from "@/app/hooks/useTowns";
 import Select from "react-select";
 
 export type TownSelectValue = {
-  code: string;
-  label: string;
+  localName: string;
+  localRegion: string;
+  name: string;
   region: string;
-  latlng?: number[];
+  label: string;
 };
 
 interface TownSelectProps {
@@ -21,15 +22,15 @@ const TownSelect: React.FC<TownSelectProps> = ({ value, onChange }) => {
   return (
     <div>
       <Select
-        placeholder="Къде..."
+        placeholder="Избери локация..."
         isClearable
         options={getAll()}
         value={value}
         onChange={(value) => onChange(value as TownSelectValue)}
         formatOptionLabel={(option: any) => (
           <div className="flex flex-row items-center gap-1">
-            <div>{option.label},</div>
-            <span className="text-neutral-500 ml-1">{option.region}</span>
+            <div className="text-black">{option.label},</div>
+            <span className="text-neutral-500 ml-1">{option.localRegion}</span>
           </div>
         )}
         classNames={{
@@ -42,10 +43,11 @@ const TownSelect: React.FC<TownSelectProps> = ({ value, onChange }) => {
           borderRadius: 6,
           colors: {
             ...theme.colors,
-            primary: "black",
-            primary25: "#ffe4e6",
+            primary: "#fff",
+            primary25: "#fecdd3",
           },
         })}
+        noOptionsMessage={() => "Няма резултати"}
       />
     </div>
   );

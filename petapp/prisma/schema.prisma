@@ -49,14 +49,16 @@ model Account {
 }
 
 model Listing {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  description  String
-  imageSrc     String
-  createdAt    DateTime @default(now())
-  category     String
-  locationCode String
-  userId       String   @db.ObjectId
-  price        Float
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  imageSrc    String
+  createdAt   DateTime @default(now())
+  category    String
+  address     String
+  lat         Float
+  lng         Float
+  userId      String   @db.ObjectId
+  price       Float
 
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
@@ -99,7 +101,9 @@ model Exchange {
   imageSrc       String
   createdAt      DateTime @default(now())
   category       String
-  locationCode   String
+  address        String
+  lat            Float
+  lng            Float
   userId         String   @db.ObjectId
   customerUserId String   @db.ObjectId
   price          Float
@@ -108,15 +112,17 @@ model Exchange {
 }
 
 model Search {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  description  String
-  imageSrc     String
-  createdAt    DateTime @default(now())
-  category     String
-  locationCode String
-  userId       String   @db.ObjectId
-  found        Boolean
-  foundAt      DateTime
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  imageSrc    String
+  createdAt   DateTime @default(now())
+  category    String
+  address     String
+  lat         Float
+  lng         Float
+  userId      String   @db.ObjectId
+  found       Boolean
+  foundAt     DateTime
 
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   findings Finding[]
@@ -133,14 +139,16 @@ model Finding {
 }
 
 model PartnerRequest {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  description  String
-  imageSrc     String
-  createdAt    DateTime @default(now())
-  category     String
-  locationCode String
-  userId       String   @db.ObjectId
-  match        Boolean
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  imageSrc    String
+  createdAt   DateTime @default(now())
+  category    String
+  address     String
+  lat         Float
+  lng         Float
+  userId      String   @db.ObjectId
+  match       Boolean
 
   user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   responses PartnerResponse[]
