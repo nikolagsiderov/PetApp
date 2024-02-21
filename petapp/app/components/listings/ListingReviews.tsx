@@ -3,7 +3,9 @@
 import { SafeReview } from "@/app/types";
 import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
 import Avatar from "../Avatar";
-import { FaStar } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+import { FaStarHalfAlt } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
 
 interface ListingReviewsProps {
   reviews?: SafeReview[] | null | undefined;
@@ -15,6 +17,25 @@ const ListingReviews: React.FC<ListingReviewsProps> = ({ reviews }) => {
       {reviews && (
         <div className="flex flex-col gap-8">
           <hr />
+          <div
+            className="
+            text-xl
+            flex 
+            flex-col 
+            items-center
+            justify-center
+            gap-2
+          "
+          >
+            <div className="flex flex-row gap-1 text-lg font-semibold items-center justify-end">
+              <FaStar size={32} className="fill-amber-500" />
+              <FaStar size={32} className="fill-amber-500" />
+              <FaStar size={32} className="fill-amber-500" />
+              <FaStar size={32} className="fill-amber-500" />
+              <FaStarHalfAlt size={32} className="fill-amber-500" />
+            </div>
+            <div>от 58 отзива</div>
+          </div>
           <div
             className="
       text-xl font-semibold flex flex-row gap-2"

@@ -36,7 +36,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           "
         >
           <div>Обявата е публикувана от {user?.name}</div>
-          <Avatar src={user?.image} />
+          <Avatar width={60} height={60} src={user?.image} />
         </div>
         <div
           className="

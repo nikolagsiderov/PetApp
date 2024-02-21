@@ -152,12 +152,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
             className={
               !horizontal
                 ? !reservation
-                  ? "col-span-3 flex flex-row top-0 text-lg font-semibold"
+                  ? "col-span-3 flex flex-row top-0 text-sm font-semibold justify-end"
                   : "hidden"
-                : "row-span-2 flex flex-row top-0 text-lg font-semibold"
+                : "row-span-2 flex flex-row top-0 text-sm font-semibold justify-start items-center"
             }
           >
-            <FaStar size={16} className="fill-amber-400" /> 4.5/5
+            <FaStar
+              size={!horizontal ? 16 : 14}
+              className={`fill-amber-400 ${!horizontal && "pt-1"}`}
+            />{" "}
+            4.5/5
           </div>
         </div>
         {reservation && onAction && actionLabel && (
