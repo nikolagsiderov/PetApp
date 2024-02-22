@@ -8,13 +8,14 @@ import { SafeListing, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
+import Tabs from "../components/Tabs";
 
-interface MyListingsClientProps {
+interface ManageClientProps {
   listings: Array<SafeListing> | null | undefined | any;
   currentUser?: SafeUser | null;
 }
 
-const MyListingsClient: React.FC<MyListingsClientProps> = ({
+const ManageClient: React.FC<ManageClientProps> = ({
   listings,
   currentUser,
 }) => {
@@ -41,6 +42,25 @@ const MyListingsClient: React.FC<MyListingsClientProps> = ({
     [router]
   );
 
+  let bodyContent = (
+    <div
+      className="
+          mt-10
+          flex flex-col
+          gap-8
+        "
+    >
+      {listings.map((listing: any) => (
+        <ListingCard
+          key={listing.id}
+          data={listing}
+          currentUser={currentUser}
+          listingUserName={listing.user.name}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <Container>
       <div
@@ -50,36 +70,28 @@ const MyListingsClient: React.FC<MyListingsClientProps> = ({
           lg:pt-24 pt-32 pb-20
         "
       >
-        <Heading title="Мойте обяви" subtitle="Списък с мойте обяви" />
+        <Heading
+          title={`Здравейте, ${currentUser?.name}`}
+          subtitle="От тук може да управлявате вашата обява."
+        />
         <div
           className="
-          mt-10
-          grid 
-          grid-cols-1 
-          sm:grid-cols-2 
-          md:grid-cols-3 
-          lg:grid-cols-4
-          xl:grid-cols-5
-          2xl:grid-cols-6
-          gap-8
+          max-w-screen-lg 
+          mx-auto
+          lg:pt-16 pt-20 pb-20
         "
         >
-          {listings.map((listing: any) => (
-            <ListingCard
-              key={listing.id}
-              data={listing}
-              actionId={listing.id}
-              onAction={onDelete}
-              disabled={deletingId === listing.id}
-              actionLabel="Изтрий обява"
-              currentUser={currentUser}
-              listingUserName={listing.user.name}
-            />
-          ))}
+          <Tabs
+            items={[
+              { buttonTitle: "Престой", content: bodyContent },
+              { buttonTitle: "Продай/Подари", content: "testing2" },
+              { buttonTitle: "Партньор", content: "testing3" },
+            ]}
+          />
         </div>
       </div>
     </Container>
   );
 };
 
-export default MyListingsClient;
+export default ManageClient;

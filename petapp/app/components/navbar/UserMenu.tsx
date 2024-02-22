@@ -10,6 +10,7 @@ import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import useBecomeSitterModal from "@/app/hooks/useBecomeSitterModal";
 import { useRouter } from "next/navigation";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -43,10 +44,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
       <div className="flex flex-row items-center text-center gap-3">
         {hasUserAlreadyListed ? (
           <div
-            onClick={() => router.push("/my-listings")}
-            className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+            onClick={() => router.push("/manage")}
+            className="hidden md:block text-sm font-semibold p-2 rounded-full hover:bg-neutral-100 transition cursor-pointer"
           >
-            Моите обяви
+            <MdAdminPanelSettings size={32} className="fill-black" />
           </div>
         ) : (
           <div
@@ -86,8 +87,8 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 />
                 <hr />
                 <MenuItem
-                  onClick={() => router.push("/my-listings")}
-                  label="Моите обяви"
+                  onClick={() => router.push("/manage")}
+                  label="Управление"
                   fontWeightClass={"font-md"}
                 />
                 <MenuItem
