@@ -165,7 +165,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 md:col-span-3
               "
             >
-              <div className="lg:sticky lg:top-[8rem]">
+              <div className="lg:sticky lg:top-[7rem]">
                 <ListingReservation
                   price={listing.price}
                   totalPrice={totalPrice}
