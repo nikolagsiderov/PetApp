@@ -5,7 +5,7 @@ import ListView from "./ListView";
 import MapView from "./MapView";
 import { FaMapLocationDot, FaListUl } from "react-icons/fa6";
 import { useState } from "react";
-import { SafeListing, SafeUser } from "../types";
+import { SafeListing, SafeUser } from "../../types";
 
 interface PetSittingClientProps {
   listings?: Array<SafeListing> | null | undefined | any;

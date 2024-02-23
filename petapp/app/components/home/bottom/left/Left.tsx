@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 
-const Left = () => {
+const LeftBottom = () => {
   return (
-    <div className="grid-span-1">
+    <div className="col-span-1">
       <div className="flex flex-col w-full">
         <div className="aspect-[3/4] h-full relative overflow-hidden">
           <Image
@@ -19,4 +19,4 @@ const Left = () => {
   );
 };
 
-export default Left;
+export default LeftBottom;

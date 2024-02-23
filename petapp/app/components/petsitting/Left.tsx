@@ -48,7 +48,13 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
             minZoom: 7.2,
           }}
         >
-          <MarkerF position={userLocation} />
+          <MarkerF
+            icon={{
+              url: "/images/logo.png",
+              scaledSize: new google.maps.Size(60, 60),
+            }}
+            position={userLocation}
+          />
           {listings?.map((listing: any) => {
             return (
               <div key={listing.id}>

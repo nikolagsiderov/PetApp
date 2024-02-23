@@ -2,7 +2,7 @@ import EmptyState from "@/app/components/EmptyState";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ReviewClient from "./ReviewClient";
 import ClientOnly from "@/app/components/ClientOnly";
-import getReservationById from "@/app/actions/reservations/getReservationById";
+import { getReservationById } from "@/app/actions/reservations/getActions";
 
 interface IParams {
   reservationId?: string;

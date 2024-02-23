@@ -1,8 +1,8 @@
 "use client";
 
-import Left from "../components/petsitting/Left";
-import Right from "../components/petsitting/Right";
-import { SafeUser } from "../types";
+import Left from "../../components/petsitting/Left";
+import Right from "../../components/petsitting/Right";
+import { SafeUser } from "../../types";
 
 interface MapViewProps {
   listings?: any;

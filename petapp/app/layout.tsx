@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar/Navbar";
-import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
-import LoginModal from "./components/modals/LoginModal";
-import getCurrentUser from "./actions/getCurrentUser";
 import Footer from "./components/footer/Footer";
-import BottomNav from "./components/navbar/BottomNav";
 import ClientOnly from "@/app/components/ClientOnly";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { hasUserAlreadyListed } from "./actions/listings/listingsValidations";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,35 +14,18 @@ export const metadata: Metadata = {
   description: "Koleto and Jorkata's pet app",
 };
 
-interface IParams {
-  userId?: string;
-}
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const currentUser = await getCurrentUser();
-  const params: IParams = { userId: currentUser?.id };
-  const userHasAlreadyListed = currentUser
-    ? await hasUserAlreadyListed(params)
-    : false;
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <ClientOnly>
           <ToasterProvider />
-          <LoginModal />
-          <RegisterModal />
-          <Navbar
-            currentUser={currentUser}
-            hasUserAlreadyListed={userHasAlreadyListed}
-          />
           <div>{children}</div>
           <Footer />
-          <BottomNav />
         </ClientOnly>
         <Analytics />
         <SpeedInsights />

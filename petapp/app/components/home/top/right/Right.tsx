@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Right = () => {
   return (
-    <div className="grid-span-1">
+    <div className="col-span-1">
       <div className="flex flex-col w-full">
         <div className="aspect-square w-full relative overflow-hidden">
           <Image

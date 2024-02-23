@@ -1,7 +1,7 @@
 "use client";
 
 import ListingCard from "@/app/components/listings/ListingCard";
-import { SafeUser } from "../types";
+import { SafeUser } from "../../types";
 
 interface ListViewProps {
   listings?: any;

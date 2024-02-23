@@ -3,9 +3,9 @@
 import { FaApple } from "react-icons/fa6";
 import { FaGooglePlay } from "react-icons/fa6";
 
-const Right = () => {
+const RightBottom = () => {
   return (
-    <div className="grid-span-1 relative">
+    <div className="col-span-1 relative">
       <div className="mb-4 2xl:pt-[300px]">
         <div className="text-4xl lg:text-6xl font-bold leading-tight lg:leading-tight">
           Свали мобилното приложение
@@ -32,4 +32,4 @@ const Right = () => {
   );
 };
 
-export default Right;
+export default RightBottom;

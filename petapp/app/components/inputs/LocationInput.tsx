@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
@@ -42,17 +44,17 @@ const LocationInput: React.FC<LocationInputProps> = ({
     setValue(address, false);
     clearSuggestions();
 
-    console.log(address);
-
     const results = await getGeocode({ address });
     const { lat, lng } = await getLatLng(results[0]);
     onChange({ address, lat, lng });
-
-    console.log(locationValue);
   };
 
   return isLoaded ? (
-    <Combobox value={value} onChange={handleSelect} disabled={!ready}>
+    <Combobox
+      value={locationValue?.address} // previously this was set to 'value'
+      onChange={handleSelect}
+      disabled={!ready}
+    >
       <Combobox.Input
         className={"border-2 border-neutral-500 py-3 px-3 rounded-lg"}
         onChange={(e) => setValue(e.target.value)}
