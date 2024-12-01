@@ -47,7 +47,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             onClick={() => router.push("/manage")}
             className="hidden md:block text-sm font-semibold p-2 rounded-full hover:bg-neutral-100 transition cursor-pointer"
           >
-            <MdAdminPanelSettings size={32} className="fill-black" />
+            <MdAdminPanelSettings size={32} className="fill-sky-900" />
           </div>
         ) : (
           <div

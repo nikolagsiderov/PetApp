@@ -2,7 +2,7 @@
 
 import { SafeListing, SafeUser } from "@/app/types";
 import Container from "@/app/components/Container";
-import ListingEdit from "@/app/components/manage/ListingEdit";
+import ListingEdit from "@/app/components/listings/ListingEdit";
 import Tabs from "@/app/components/Tabs";
 
 interface ListingClientProps {

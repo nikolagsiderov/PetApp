@@ -2,7 +2,7 @@
 
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo } from "react";
+import { ReactNode, useCallback, useMemo } from "react";
 import { format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
@@ -17,7 +17,7 @@ interface ListingCardProps {
   reservation?: SafeReservation | null;
   onAction?: (id: string) => void;
   disabled?: boolean;
-  actionLabel?: string;
+  actionLabel?: ReactNode;
   actionId?: string;
   currentUser?: SafeUser | null;
   listingUserName: string;
@@ -164,15 +164,32 @@ const ListingCard: React.FC<ListingCardProps> = ({
             4.5/5
           </div>
         </div>
-        {reservation && onAction && actionLabel && (
-          <Button
-            disabled={disabled}
-            small
-            label={actionLabel}
-            onClick={handleAction}
-          />
+        {reservation && (
+          <div
+            className={!horizontal ? "grid grid-cols-12" : "grid grid-rows-12"}
+          >
+            <div
+              className={
+                !horizontal
+                  ? !reservation
+                    ? "col-span-9"
+                    : "col-span-12"
+                  : "row-span-10"
+              }
+            >
+              {reservation.approved ? (
+                <div className="font-light text-emerald-800 text-sm">
+                  <span>Резервацията е одобрена</span>
+                </div>
+              ) : (
+                <div className="font-light text-rose-800 text-sm">
+                  <span>Тази резервация все още очаква да се одобри</span>
+                </div>
+              )}
+            </div>
+          </div>
         )}
-        {!reservation && onAction && actionLabel && (
+        {onAction && actionLabel && (
           <Button
             disabled={disabled}
             small

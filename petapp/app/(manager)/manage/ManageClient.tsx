@@ -3,7 +3,6 @@
 import { SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
-import Tabs from "../../components/Tabs";
 
 interface ManageClientProps {
   currentUser?: SafeUser | null;

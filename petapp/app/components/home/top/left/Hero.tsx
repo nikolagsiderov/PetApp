@@ -9,7 +9,7 @@ const Hero = () => {
         Добре дошли в
         <br />
         <h1 className="text-rose-500 font-black tracking-tighter">
-          Petland.bg
+          PetApp
         </h1>
       </div>
       <br />

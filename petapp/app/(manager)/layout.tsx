@@ -1,5 +1,6 @@
 import ClientOnly from "../components/ClientOnly";
-import SideNavbar from "../components/navbar/SideNavbar";
+import ManagerBottomNav from "../components/navbar/ManagerBottomNav";
+import ManagerNavbar from "../components/navbar/ManagerNavbar";
 
 export default async function RootLayout({
   children,
@@ -8,8 +9,9 @@ export default async function RootLayout({
 }>) {
   return (
     <ClientOnly>
-      <SideNavbar />
+      <ManagerNavbar />
       <div>{children}</div>
+      <ManagerBottomNav />
     </ClientOnly>
   );
 }

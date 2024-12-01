@@ -37,7 +37,7 @@ const NavigationMenu = () => {
         >
           <div className="flex flex-row gap-1 justify-center items-center">
             <FaDog size={24} className="fill-rose-500" />
-            Купи/Продай
+            Намери дом
           </div>
         </div>
         <div

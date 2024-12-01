@@ -5,11 +5,11 @@ import { FaSquareFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="hidden md:block fixed bottom-0 w-full z-10 bg-white">
+    <div className="hidden md:block fixed bottom-0 w-full z-30 bg-white">
       <div className="py-2 border-t-[1px]">
         <Container>
           <div className="flex flex-row overflow-hidden justify-between items-start gap-2 md:text-xs">
-            <div>© 2024 Petland.bg</div>
+            <div>© 2024 PetApp</div>
             <div className="font-black">·</div>
             <div className="hover:underline cursor-pointer">
               Условия за ползване
@@ -19,9 +19,16 @@ const Footer = () => {
               Политика за поверителност и бисквитки
             </div>
             <div className="font-black">·</div>
-            <div className="hover:underline cursor-pointer">
-              Свържете се с нас
-            </div>
+            <a
+              href="https://nikolagsiderov.dev/"
+              target="blank"
+              className="flex flex-row gap-1 overflow-hidden"
+            >
+              <div>Изработка и дизайн: </div>
+              <div className="font-semibold">
+                nikolagsiderov.dev
+              </div>
+            </a>
             <div className="font-black">·</div>
             <div className="flex flex-row overflow-hidden justify-center items-center gap-2">
               <div>Последвай ни в социалните мрежи</div>
