@@ -112,8 +112,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
             </div>
           )}
           <div className="absolute bottom-3 left-3">
-            <span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-              {data.category}
+            <span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 tracking-tighter">
+              Настанява <span className="lowercase ml-1">{data.category}</span>
             </span>
           </div>
           {!reservation && (
