@@ -1,6 +1,6 @@
-# @PawPal.Users.Presentation.API_HostAddress = http://localhost:5276
+# @PawPal.Users.Presentation.API_HostAddress = http://localhost:5170
 
-# GET {{PawPal.Users.Presentation.API_HostAddress}}/users/
+# GET {{PawPal.Users.Presentation.API_HostAddress}}/weatherforecast/
 # Accept: application/json
 
 ###

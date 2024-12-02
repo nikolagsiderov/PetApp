@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawPal.Listings.Presentation.API", "PawPal.Listings.Presentation.API\PawPal.Listings.Presentation.API.csproj", "{E0D7D856-86A0-456E-A628-90D67347F03A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawPal.Listings.Services", "PawPal.Listings.Services\PawPal.Listings.Services.csproj", "{DD5C898F-A391-4DE0-9C56-83F420268146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawPal.Listings.Core", "PawPal.Listings.Core\PawPal.Listings.Core.csproj", "{2BAD88E1-18BB-40EC-AF99-FB46DD96187F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawPal.Listings.Infrastructure", "PawPal.Listings.Infrastructure\PawPal.Listings.Infrastructure.csproj", "{1D90E72F-3CA2-4C76-A1F3-FE27DEDAE485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawPal.Listings.Tests", "PawPal.Listings.Tests\PawPal.Listings.Tests.csproj", "{DD1253AC-7A05-4941-A36B-1B721B83B863}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawPal.Listings.Architecture.Tests", "PawPal.Listings.Architecture.Tests\PawPal.Listings.Architecture.Tests.csproj", "{EEB1B6B8-415F-4AC4-B434-C4A4697D5704}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0D7D856-86A0-456E-A628-90D67347F03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D7D856-86A0-456E-A628-90D67347F03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D7D856-86A0-456E-A628-90D67347F03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D7D856-86A0-456E-A628-90D67347F03A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD5C898F-A391-4DE0-9C56-83F420268146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD5C898F-A391-4DE0-9C56-83F420268146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD5C898F-A391-4DE0-9C56-83F420268146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD5C898F-A391-4DE0-9C56-83F420268146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAD88E1-18BB-40EC-AF99-FB46DD96187F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BAD88E1-18BB-40EC-AF99-FB46DD96187F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BAD88E1-18BB-40EC-AF99-FB46DD96187F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BAD88E1-18BB-40EC-AF99-FB46DD96187F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D90E72F-3CA2-4C76-A1F3-FE27DEDAE485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D90E72F-3CA2-4C76-A1F3-FE27DEDAE485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D90E72F-3CA2-4C76-A1F3-FE27DEDAE485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D90E72F-3CA2-4C76-A1F3-FE27DEDAE485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1253AC-7A05-4941-A36B-1B721B83B863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1253AC-7A05-4941-A36B-1B721B83B863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1253AC-7A05-4941-A36B-1B721B83B863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1253AC-7A05-4941-A36B-1B721B83B863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB1B6B8-415F-4AC4-B434-C4A4697D5704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB1B6B8-415F-4AC4-B434-C4A4697D5704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB1B6B8-415F-4AC4-B434-C4A4697D5704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB1B6B8-415F-4AC4-B434-C4A4697D5704}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E11FC0F-588F-4F79-B0A0-87633FFFA9C0}
+	EndGlobalSection
+EndGlobal

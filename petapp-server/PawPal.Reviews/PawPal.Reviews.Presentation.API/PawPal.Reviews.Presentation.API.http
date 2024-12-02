@@ -1,0 +1,6 @@
+# @PawPal.Reviews.Presentation.API_HostAddress = http://localhost:5028
+
+# GET {{PawPal.Reviews.Presentation.API_HostAddress}}/reviews/
+# Accept: application/json
+
+###

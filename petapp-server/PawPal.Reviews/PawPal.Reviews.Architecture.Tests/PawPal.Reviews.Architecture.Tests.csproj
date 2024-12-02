@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PawPal.Reviews.Core\PawPal.Reviews.Core.csproj" />
+    <ProjectReference Include="..\PawPal.Reviews.Infrastructure\PawPal.Reviews.Infrastructure.csproj" />
+    <ProjectReference Include="..\PawPal.Reviews.Presentation.API\PawPal.Reviews.Presentation.API.csproj" />
+    <ProjectReference Include="..\PawPal.Reviews.Services\PawPal.Reviews.Services.csproj" />
+  </ItemGroup>
+
+</Project>

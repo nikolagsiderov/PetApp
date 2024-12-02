@@ -1,0 +1,6 @@
+# @PawPal.Listings.Presentation.API_HostAddress = http://localhost:5276
+
+# GET {{PawPal.Listings.Presentation.API_HostAddress}}/listings/
+# Accept: application/json
+
+###
