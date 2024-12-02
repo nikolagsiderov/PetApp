@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawPal.Reservations.Presentation.API", "PawPal.Reservations.Presentation.API\PawPal.Reservations.Presentation.API.csproj", "{6D0425AA-11B9-4A3C-BA34-E8E95FDA6979}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawPal.Reservations.Services", "PawPal.Reservations.Services\PawPal.Reservations.Services.csproj", "{3ED9BABA-BF56-428C-A3DC-8B07BF0EEA50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawPal.Reservations.Core", "PawPal.Reservations.Core\PawPal.Reservations.Core.csproj", "{DCB391D4-D752-4B8F-B66F-0EBA6ECF1575}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawPal.Reservations.Infrastructure", "PawPal.Reservations.Infrastructure\PawPal.Reservations.Infrastructure.csproj", "{6CFCEC11-5E70-4662-AF70-93375E56DD26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawPal.Reservations.Tests", "PawPal.Reservations.Tests\PawPal.Reservations.Tests.csproj", "{552B1931-9829-491B-89F4-4A7B287D77AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawPal.Reservations.Architecture.Tests", "PawPal.Reservations.Architecture.Tests\PawPal.Reservations.Architecture.Tests.csproj", "{F88D04D5-CDC2-48F5-AC6E-D7CA7419ACB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D0425AA-11B9-4A3C-BA34-E8E95FDA6979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0425AA-11B9-4A3C-BA34-E8E95FDA6979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0425AA-11B9-4A3C-BA34-E8E95FDA6979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0425AA-11B9-4A3C-BA34-E8E95FDA6979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ED9BABA-BF56-428C-A3DC-8B07BF0EEA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ED9BABA-BF56-428C-A3DC-8B07BF0EEA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ED9BABA-BF56-428C-A3DC-8B07BF0EEA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED9BABA-BF56-428C-A3DC-8B07BF0EEA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB391D4-D752-4B8F-B66F-0EBA6ECF1575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB391D4-D752-4B8F-B66F-0EBA6ECF1575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB391D4-D752-4B8F-B66F-0EBA6ECF1575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB391D4-D752-4B8F-B66F-0EBA6ECF1575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFCEC11-5E70-4662-AF70-93375E56DD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFCEC11-5E70-4662-AF70-93375E56DD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFCEC11-5E70-4662-AF70-93375E56DD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFCEC11-5E70-4662-AF70-93375E56DD26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552B1931-9829-491B-89F4-4A7B287D77AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552B1931-9829-491B-89F4-4A7B287D77AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552B1931-9829-491B-89F4-4A7B287D77AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552B1931-9829-491B-89F4-4A7B287D77AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88D04D5-CDC2-48F5-AC6E-D7CA7419ACB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88D04D5-CDC2-48F5-AC6E-D7CA7419ACB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88D04D5-CDC2-48F5-AC6E-D7CA7419ACB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88D04D5-CDC2-48F5-AC6E-D7CA7419ACB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1A11F8A-6A02-4769-B57A-1F73817A0908}
+	EndGlobalSection
+EndGlobal
