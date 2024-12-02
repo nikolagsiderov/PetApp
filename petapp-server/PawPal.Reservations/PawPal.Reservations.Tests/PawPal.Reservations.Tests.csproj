@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PawPal.Reservations.Core\PawPal.Reservations.Core.csproj" />
+    <ProjectReference Include="..\PawPal.Reservations.Infrastructure\PawPal.Reservations.Infrastructure.csproj" />
+    <ProjectReference Include="..\PawPal.Reservations.Presentation.API\PawPal.Reservations.Presentation.API.csproj" />
+    <ProjectReference Include="..\PawPal.Reservations.Services\PawPal.Reservations.Services.csproj" />
+  </ItemGroup>
+
+</Project>
