@@ -5,10 +5,10 @@ import { FaSquareFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="hidden md:block fixed bottom-0 w-full z-30 bg-white">
-      <div className="py-2 border-t-[1px]">
+    <div className="hidden md:block fixed bottom-0 w-full z-30 bg-white/20 backdrop-blur">
+      <div className="py-1 border-t-[1px]">
         <Container>
-          <div className="flex flex-row overflow-hidden justify-between items-start gap-2 md:text-xs">
+          <div className="flex flex-row overflow-hidden justify-between items-center gap-2 md:text-xs">
             <div>© 2024 PetApp</div>
             <div className="font-black">·</div>
             <div className="hover:underline cursor-pointer">
@@ -24,8 +24,8 @@ const Footer = () => {
               target="blank"
               className="flex flex-row gap-1 overflow-hidden"
             >
-              <div>Изработка и дизайн: </div>
-              <div className="font-semibold">
+              <div className="mt-1">Изработка и дизайн: </div>
+              <div className="bg-rose-500 text-white font-semibold py-1 px-2 rounded">
                 nikolagsiderov.dev
               </div>
             </a>
