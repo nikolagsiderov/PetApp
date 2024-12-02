@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PawPal.Presentation.Api\PawPal.Users.Presentation.Api.csproj" />
     <ProjectReference Include="..\PawPal.Users.Core\PawPal.Users.Core.csproj" />
     <ProjectReference Include="..\PawPal.Users.Infrastructure\PawPal.Users.Infrastructure.csproj" />
+    <ProjectReference Include="..\PawPal.Users.Presentation.API\PawPal.Users.Presentation.API.csproj" />
     <ProjectReference Include="..\PawPal.Users.Services\PawPal.Users.Services.csproj" />
   </ItemGroup>
 
