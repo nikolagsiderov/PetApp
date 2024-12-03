@@ -2,7 +2,7 @@
 
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useRef } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
@@ -10,7 +10,8 @@ import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import useBecomeSitterModal from "@/app/hooks/useBecomeSitterModal";
 import { useRouter } from "next/navigation";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import useOnClickOutsideComponent from "@/app/hooks/useOnClickOutsideComponent";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -21,6 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
   currentUser,
   hasUserAlreadyListed,
 }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -39,6 +41,8 @@ const UserMenu: React.FC<UserMenuProps> = ({
     becomeSitterModal.onOpen();
   }, [currentUser, loginModal, becomeSitterModal]);
 
+  useOnClickOutsideComponent(ref, () => setIsOpen(false));
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center text-center gap-3">
@@ -47,7 +51,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             onClick={() => router.push("/manage")}
             className="hidden md:block text-sm font-semibold p-2 rounded-full hover:bg-neutral-100 transition cursor-pointer"
           >
-            <MdAdminPanelSettings size={32} className="fill-sky-900" />
+            <MdOutlineAdminPanelSettings size={28} className="fill-sky-900" />
           </div>
         ) : (
           <div
@@ -69,7 +73,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
       </div>
 
       {isOpen && (
-        <div className="absolute rounded-xl shadow-md w-[40svw] md:w-full bg-white overflow-hidden right-0 top-12 text-sm">
+        <div
+          ref={ref}
+          className="absolute rounded-xl shadow-md w-[40svw] md:w-full bg-white overflow-hidden right-0 top-12 text-sm"
+        >
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>

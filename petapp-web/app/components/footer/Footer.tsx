@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="py-1 border-t-[1px]">
         <Container>
           <div className="flex flex-row overflow-hidden justify-between items-center gap-2 md:text-xs">
-            <div>© 2024 PetApp</div>
+            <div>© {new Date().getFullYear()} PawPal v1.0.0-alpha</div>
             <div className="font-black">·</div>
             <div className="hover:underline cursor-pointer">
               Условия за ползване
