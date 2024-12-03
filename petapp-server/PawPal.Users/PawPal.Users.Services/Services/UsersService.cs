@@ -18,6 +18,11 @@ namespace PawPal.Users.Services.Services
 
         public async Task<Result> RegisterUserAsync(RegisterRequest request)
         {
+            var emailValidator = new EmailValidator(request.Email);
+
+            if (!emailValidator.IsValidEmailAddress())
+                return Result.Failure(PawPalErrors.InvalidEmailAddress);
+
             var hasher = new PawPalHasher();
             var passwordHash = hasher.HashPasword(request.Password, out var salt);
             var hexStringSalt = Convert.ToHexString(salt);

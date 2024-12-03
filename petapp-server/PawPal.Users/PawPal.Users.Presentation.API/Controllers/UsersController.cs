@@ -17,7 +17,8 @@ namespace PawPal.Users.Presentation.API.Controllers
             _usersService = usersService ?? throw new ArgumentNullException(nameof(usersService));
         }
 
-        [HttpPost(nameof(RegisterAsync)), AllowAnonymous]
+        [AllowAnonymous]
+        [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IResult> RegisterAsync([FromBody] RegisterRequest request)
         {
@@ -25,7 +26,7 @@ namespace PawPal.Users.Presentation.API.Controllers
 
             return result.Match(
                 onSuccess: Results.NoContent,
-                onFailure: error => Results.Conflict(error));
+                onFailure: error => Results.Json(error, statusCode: (int)error.statusCode));
         }
     }
 }
