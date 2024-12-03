@@ -10,8 +10,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PetApp",
-  description: "Koleto and Jorkata's pet app",
+  title: "PawPal",
+  description: "Pet-related application. Codename: PetApp",
 };
 
 export default async function RootLayout({
