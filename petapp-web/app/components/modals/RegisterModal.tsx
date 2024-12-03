@@ -69,7 +69,7 @@ const RegisterModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Добре дошли в PetApp" subtitle="Създай акаунт!" />
+      <Heading title="Добре дошли в PawPal" subtitle="Създай акаунт!" />
       <Input
         id="email"
         label="Имейл"
