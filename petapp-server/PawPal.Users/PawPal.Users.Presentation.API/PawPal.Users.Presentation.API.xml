@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PawPal.Users.Presentation.API</name>
+    </assembly>
+    <members>
+        <member name="M:PawPal.Users.Presentation.API.ServiceExtensions.ServiceCollectionExtensions.AddRepositoriesConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>Configure dependency injection for Repositories.</summary>
+        </member>
+        <member name="M:PawPal.Users.Presentation.API.ServiceExtensions.ServiceCollectionExtensions.AddServicesConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>Configure dependency injection for Services.</summary>
+        </member>
+    </members>
+</doc>
