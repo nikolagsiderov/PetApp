@@ -54,7 +54,7 @@ const SidebarOption = ({
 
       {notifs && open && (
         <span
-          className={`absolute right-2 size-5 m-1 p-[0.1rem] rounded-full bg-sky-900 text-xs text-white ${
+          className={`absolute right-2 size-5 m-1 p-[0.1rem] rounded-full bg-sky-900 text-xs ${
             selected !== title
               ? "bg-sky-900 text-white"
               : "bg-white text-sky-900"

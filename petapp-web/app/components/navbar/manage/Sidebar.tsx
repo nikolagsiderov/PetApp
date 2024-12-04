@@ -14,7 +14,13 @@ import SidebarToggleClose from "./SidebarToggleClose";
 import SidebarReturn from "./SidebarReturn";
 import { SafeUser } from "@/app/types";
 
-const Sidebar = ({ currentUser }: { currentUser: SafeUser | null }) => {
+const Sidebar = ({
+  currentUser,
+  requestsCount,
+}: {
+  currentUser: SafeUser | null;
+  requestsCount: number;
+}) => {
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
   const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("Начало");
@@ -69,7 +75,7 @@ const Sidebar = ({ currentUser }: { currentUser: SafeUser | null }) => {
           selected={selected}
           setSelected={setSelected}
           open={open}
-          notifs={3}
+          notifs={requestsCount}
         />
         <SidebarOption
           route="/manage/listing"
