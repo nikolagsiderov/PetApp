@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "../../../Container";
+import MainContainer from "../../../MainContainer";
 import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa6";
 import { GiRabbit } from "react-icons/gi";
@@ -61,7 +61,7 @@ const Categories = () => {
   }
 
   return (
-    <Container>
+    <MainContainer>
       <div className="flex flex-row items-center justify-between overflow-x-auto">
         {categories.map((item) => (
           <CategoryBox
@@ -72,7 +72,7 @@ const Categories = () => {
           />
         ))}
       </div>
-    </Container>
+    </MainContainer>
   );
 };
 

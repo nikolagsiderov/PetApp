@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "../../Container";
+import MainContainer from "../../MainContainer";
 import Categories from "./petsitting/Categories";
 import Logo from "../Logo";
 import NavigationMenu from "./NavigationMenu";
@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, hasUserAlreadyListed }) =>
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-2 lg:border-b-[1px] lg:border-neutral-100">
-        <Container>
+        <MainContainer>
           <div className="flex flex-col gap-2">
             <div className="flex flex-row items-center justify-between gap-0">
               <Logo />
@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, hasUserAlreadyListed }) =>
               </div>
             )}
           </div>
-        </Container>
+        </MainContainer>
       </div>
       {currentPathIsPetSitting && <Categories />}
     </div>

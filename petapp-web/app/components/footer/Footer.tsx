@@ -1,13 +1,13 @@
 "use client";
 
-import Container from "../Container";
+import MainContainer from "../MainContainer";
 import { FaSquareFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <div className="hidden md:block fixed bottom-0 w-full z-30 bg-white/20 backdrop-blur">
       <div className="py-1 border-t-[1px]">
-        <Container>
+        <MainContainer>
           <div className="flex flex-row overflow-hidden justify-between items-center gap-2 md:text-xs">
             <div>© {new Date().getFullYear()} PawPal v1.0.0-alpha</div>
             <div className="font-black">·</div>
@@ -43,7 +43,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </Container>
+        </MainContainer>
       </div>
     </div>
   );

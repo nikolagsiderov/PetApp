@@ -6,7 +6,7 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SafeReservation, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
-import Container from "@/app/components/Container";
+import MainContainer from "@/app/components/MainContainer";
 import ListingCard from "@/app/components/listings/ListingCard";
 
 interface ReservationsClientProps {
@@ -51,7 +51,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   );
 
   return (
-    <Container>
+    <MainContainer>
       <div
         className="
           max-w-screen-lg 
@@ -129,7 +129,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
           ))}
         </div>
       </div>
-    </Container>
+    </MainContainer>
   );
 };
 
