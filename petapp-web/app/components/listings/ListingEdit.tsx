@@ -156,9 +156,6 @@ const ListingEdit: React.FC<ListingEditProps> = ({ listing, reservation }) => {
           <Button small label={"Запази промени"} onClick={() => onSubmit} />
         </div>
         <div className="col-span-6 lg:col-span-2 flex flex-row gap-32">
-          <Button small label={"Промени"} onClick={() => {}} />
-        </div>
-        <div className="col-span-6 lg:col-span-2 flex flex-row gap-32">
           <Button small label={"Изтрий"} onClick={onDelete} />
         </div>
       </div>

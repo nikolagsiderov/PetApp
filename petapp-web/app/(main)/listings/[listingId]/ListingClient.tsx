@@ -13,7 +13,7 @@ import {
   SafeReview,
   SafeUser,
 } from "@/app/types";
-import Container from "@/app/components/Container";
+import MainContainer from "@/app/components/MainContainer";
 import { categories } from "@/app/components/navbar/main/petsitting/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
@@ -128,7 +128,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   }, [dateRange, listing.price]);
 
   return (
-    <Container>
+    <MainContainer>
       <div
         className="
           max-w-screen-lg 
@@ -182,7 +182,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
           <ListingMap listing={listing} address={address} />
         </div>
       </div>
-    </Container>
+    </MainContainer>
   );
 };
 

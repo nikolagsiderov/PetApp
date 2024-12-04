@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SafeReservation, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
-import Container from "@/app/components/Container";
+import MainContainer from "@/app/components/MainContainer";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/app/components/inputs/Input";
 import Button from "@/app/components/Button";
@@ -77,7 +77,7 @@ const ReviewClient: React.FC<ReviewClientProps> = ({ reservation }) => {
   };
 
   return (
-    <Container>
+    <MainContainer>
       <div
         className="
           max-w-screen-lg 
@@ -163,7 +163,7 @@ const ReviewClient: React.FC<ReviewClientProps> = ({ reservation }) => {
           </div>
         </div>
       </div>
-    </Container>
+    </MainContainer>
   );
 };
 

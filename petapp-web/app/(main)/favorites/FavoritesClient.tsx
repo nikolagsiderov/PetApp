@@ -1,6 +1,6 @@
 import { SafeListing, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
-import Container from "@/app/components/Container";
+import MainContainer from "@/app/components/MainContainer";
 import ListingCard from "@/app/components/listings/ListingCard";
 
 interface FavoritesClientProps {
@@ -13,7 +13,7 @@ const FavoritesClient: React.FC<FavoritesClientProps> = ({
   currentUser,
 }) => {
   return (
-    <Container>
+    <MainContainer>
       <div
         className="
           max-w-screen-lg 
@@ -45,7 +45,7 @@ const FavoritesClient: React.FC<FavoritesClientProps> = ({
           ))}
         </div>
       </div>
-    </Container>
+    </MainContainer>
   );
 };
 

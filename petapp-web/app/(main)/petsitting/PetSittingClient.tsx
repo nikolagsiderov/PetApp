@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/app/components/Container";
+import MainContainer from "@/app/components/MainContainer";
 import ListView from "./ListView";
 import MapView from "./MapView";
 import { FaMapLocationDot, FaListUl } from "react-icons/fa6";
@@ -23,7 +23,7 @@ const PetSittingClient: React.FC<PetSittingClientProps> = ({
   };
 
   return (
-    <Container>
+    <MainContainer>
       <div className="hidden lg:block right-20 fixed z-10 bottom-20 justify-center items-center">
         <div
           onClick={toggleView}
@@ -45,7 +45,7 @@ const PetSittingClient: React.FC<PetSittingClientProps> = ({
 
       {!mapView && <ListView listings={listings} currentUser={currentUser} />}
       {mapView && <MapView listings={listings} currentUser={currentUser} />}
-    </Container>
+    </MainContainer>
   );
 };
 
