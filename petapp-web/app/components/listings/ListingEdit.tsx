@@ -132,7 +132,6 @@ const ListingEdit: React.FC<ListingEditProps> = ({ listing, reservation }) => {
         <div className="col-span-12 lg:col-span-1 font-semibold">Адрес:</div>
         <div className="col-span-12 lg:col-span-4">
           <LocationInput
-            locationValue={location}
             onChange={(locationValue) =>
               setCustomValue("location", locationValue)
             }

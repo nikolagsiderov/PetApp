@@ -7,6 +7,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useGooglePlacesPublicAddress from "@/app/hooks/useGooglePlacesPublicAddress";
 
 export type LocationValue = {
   address: string;
@@ -15,15 +16,13 @@ export type LocationValue = {
 };
 
 interface LocationInputProps {
-  locationValue?: LocationValue;
   onChange: (locationValue: LocationValue) => void;
 }
 
-const LocationInput: React.FC<LocationInputProps> = ({
-  locationValue,
-  onChange,
-}) => {
+const LocationInput: React.FC<LocationInputProps> = ({ onChange }) => {
   const [searchResult, setSearchResult] = useState<any>(null);
+  const [privateAddress, setPrivateAddress] = useState<any>(null);
+  const [publicAddress, setPublicAddress] = useState<string>("");
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCPASOspif-cElvaiBWxsuLwAHKq9YyKbs",
@@ -49,23 +48,24 @@ const LocationInput: React.FC<LocationInputProps> = ({
   function onPlaceChanged() {
     if (searchResult != null) {
       const place = searchResult.getPlace();
-      const formattedAddress = place.formatted_address;
 
-      handleSelect(formattedAddress);
+      setPrivateAddress(place.formatted_address);
+      useGooglePlacesPublicAddress({ googlePlace: place, setPublicAddress });
+      handleSelect();
     } else {
-      toast.error("Моля въведете адрес в България.");
+      toast.error("Моля въведете и изберете адрес.");
     }
   }
 
-  const handleSelect = async (address: any) => {
-    setValue(address, false);
+  const handleSelect = async () => {
+    setValue(privateAddress, false);
     clearSuggestions();
 
-    if (address !== null) {
-      const results = await getGeocode({ address });
+    if (privateAddress !== null) {
+      const results = await getGeocode({ address: privateAddress });
       const { lat, lng } = await getLatLng(results[0]);
 
-      onChange({ address, lat, lng });
+      onChange({ address: publicAddress, lat, lng });
     }
   };
 

@@ -160,7 +160,6 @@ const BecomeSitterModal = () => {
           subtitle="Помогнете на хората да ви намират лесно"
         />
         <LocationInput
-          locationValue={location}
           onChange={(locationValue) =>
             setCustomValue("location", locationValue)
           }
