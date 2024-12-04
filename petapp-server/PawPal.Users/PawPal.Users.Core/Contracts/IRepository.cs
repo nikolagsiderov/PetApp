@@ -7,7 +7,6 @@ namespace PawPal.Users.Core.Contracts
     {
         Task<TEntity> AddAsync(TEntity entity);
 
-
         Task<ICollection<TEntity>> AddManyAsync(ICollection<TEntity> entities);
 
         Task<TEntity> UpdateAsync(TEntity entity);
