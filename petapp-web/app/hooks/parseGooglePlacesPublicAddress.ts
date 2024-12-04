@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
 
-interface IUseGooglePlacePublicAddress {
+interface IGooglePlacePublicAddress {
   googlePlace: any;
   setPublicAddress: Dispatch<SetStateAction<string>>;
 }
 
-const useGooglePlacePublicAddress = ({
+const parseGooglePlacePublicAddress = ({
   googlePlace,
   setPublicAddress,
-}: IUseGooglePlacePublicAddress) => {
+}: IGooglePlacePublicAddress) => {
   let temp: string = "";
   const components: Array<{
     long_name: string;
@@ -31,4 +31,4 @@ const useGooglePlacePublicAddress = ({
   setPublicAddress(result);
 };
 
-export default useGooglePlacePublicAddress;
+export default parseGooglePlacePublicAddress;
