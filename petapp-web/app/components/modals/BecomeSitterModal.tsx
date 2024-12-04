@@ -69,34 +69,50 @@ const BecomeSitterModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     if (step !== STEPS.PRICE) {
       return onNext();
+    } else {
+      if (
+        data.category == null ||
+        data.category == "" ||
+        data.location == null ||
+        data.location == "" ||
+        data.description == null ||
+        data.description == "" ||
+        data.price == null ||
+        data.price == "" ||
+        data.price <= 0
+      ) {
+        toast.error(
+          "Моля въведи категория, локация, описание и цена, за да продължиш."
+        );
+      } else {
+        setIsLoading(true);
+
+        axios
+          .post("/api/listings", data)
+          .then(() => {
+            toast.success("Обявата е успешно създадена!");
+            router.refresh();
+            reset();
+            setStep(STEPS.CATEGORY);
+            becomeSitterModal.onClose();
+          })
+          .catch((error) => {
+            if (
+              error &&
+              error.response &&
+              error.response.data &&
+              error.response.data.message
+            ) {
+              toast.error(error.response.data.message);
+            } else {
+              toast.error("Нещо се обърка.");
+            }
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }
     }
-
-    setIsLoading(true);
-
-    axios
-      .post("/api/listings", data)
-      .then(() => {
-        toast.success("Обявата е успешно създадена!");
-        router.refresh();
-        reset();
-        setStep(STEPS.CATEGORY);
-        becomeSitterModal.onClose();
-      })
-      .catch((error) => {
-        if (
-          error &&
-          error.response &&
-          error.response.data &&
-          error.response.data.message
-        ) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("Нещо се обърка.");
-        }
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
   };
 
   const actionLabel = useMemo(() => {

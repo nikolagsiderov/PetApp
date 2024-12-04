@@ -32,7 +32,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
         "
       >
         <Image
-          src={imageSrc}
+          src={imageSrc ? imageSrc : "/images/review page background.png"}
           fill
           className="object-cover w-full"
           alt="Image"

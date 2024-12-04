@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { useJsApiLoader } from "@react-google-maps/api";
+import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import { Combobox } from "@headlessui/react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 export type LocationValue = {
   address: string;
@@ -23,6 +23,8 @@ const LocationInput: React.FC<LocationInputProps> = ({
   locationValue,
   onChange,
 }) => {
+  const [searchResult, setSearchResult] = useState<any>(null);
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCPASOspif-cElvaiBWxsuLwAHKq9YyKbs",
     libraries: ["places"],
@@ -40,43 +42,40 @@ const LocationInput: React.FC<LocationInputProps> = ({
     },
   });
 
-  const handleSelect = async (address: string) => {
+  function onLoad(autocomplete: any) {
+    setSearchResult(autocomplete);
+  }
+
+  function onPlaceChanged() {
+    if (searchResult != null) {
+      const place = searchResult.getPlace();
+      const formattedAddress = place.formatted_address;
+
+      handleSelect(formattedAddress);
+    } else {
+      toast.error("Моля въведете адрес в България.");
+    }
+  }
+
+  const handleSelect = async (address: any) => {
     setValue(address, false);
     clearSuggestions();
 
-    const results = await getGeocode({ address });
-    const { lat, lng } = await getLatLng(results[0]);
-    onChange({ address, lat, lng });
+    if (address !== null) {
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+
+      onChange({ address, lat, lng });
+    }
   };
 
   return isLoaded ? (
-    <Combobox
-      value={locationValue?.address} // previously this was set to 'value'
-      onChange={handleSelect}
-      disabled={!ready}
-    >
-      <Combobox.Input
-        className={"border-2 border-neutral-500 py-3 px-3 rounded-lg"}
-        onChange={(e) => setValue(e.target.value)}
+    <Autocomplete onPlaceChanged={onPlaceChanged} onLoad={onLoad}>
+      <input
         placeholder="Въведи адрес..."
+        className="w-full py-2 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-0 border-gray-400 focus:border-gray-700 border-2 rounded sm:text-sm/6"
       />
-      <Combobox.Options
-        className={"border-2 border-neutral-800 py-3 px-3 rounded-lg"}
-      >
-        {status === "OK" &&
-          data.map(({ place_id, description }) => (
-            <Combobox.Option
-              className={
-                "hover:bg-neutral-100 cursor-pointer py-1 px-1 rounded-lg"
-              }
-              key={place_id}
-              value={description}
-            >
-              {description}
-            </Combobox.Option>
-          ))}
-      </Combobox.Options>
-    </Combobox>
+    </Autocomplete>
   ) : (
     <></>
   );

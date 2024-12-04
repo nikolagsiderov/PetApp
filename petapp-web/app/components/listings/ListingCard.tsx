@@ -73,16 +73,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
     return `${format(start, "PP")} - ${format(end, "PP")}`;
   }, [reservation]);
 
-  const address = useMemo(() => {
-    const town = getByValue(data.address.split(",")[1].trim());
-
-    if (town) {
-      return `${town.localName}, България`;
-    } else {
-      return "България";
-    }
-  }, [getByValue, data.address]);
-
   return (
     <div
       className="col-span-1 cursor-pointer group"
@@ -98,7 +88,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
         >
           <Image
             alt="Listing"
-            src={data.imageSrc}
+            src={
+              data.imageSrc
+                ? data.imageSrc
+                : "/images/review page background.png"
+            }
             className="object-cover h-full w-full group-hover:scale-110 transition"
             fill
           />
@@ -135,7 +129,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             }
           >
             <div className="font-semibold text-lg">{listingUserName}</div>
-            <div className="font-light text-sm">{address}</div>
+            <div className="font-light text-sm w-64 overflow-hidden truncate">{data.address}</div>
             <div className="font-light text-neutral-500">
               {reservation && reservationDate}
             </div>

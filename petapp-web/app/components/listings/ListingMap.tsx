@@ -6,10 +6,9 @@ import Heading from "../Heading";
 
 interface ListingMapProps {
   listing: SafeListing;
-  address: string;
 }
 
-const ListingMap: React.FC<ListingMapProps> = ({ listing, address }) => {
+const ListingMap: React.FC<ListingMapProps> = ({ listing }) => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCPASOspif-cElvaiBWxsuLwAHKq9YyKbs",
     libraries: ["places"],
@@ -18,7 +17,7 @@ const ListingMap: React.FC<ListingMapProps> = ({ listing, address }) => {
   return isLoaded ? (
     <div className="flex flex-col gap-8 mb-12 lg:mb-0">
       <hr />
-      <Heading subtitle={address} />
+      <Heading subtitle={listing.address} />
       <GoogleMap
         mapContainerClassName="w-full h-[36rem] rounded-2xl"
         center={{
