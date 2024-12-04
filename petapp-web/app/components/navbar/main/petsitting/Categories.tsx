@@ -1,12 +1,12 @@
 "use client";
 
-import Container from "../Container";
+import Container from "../../../Container";
 import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa6";
 import { GiRabbit } from "react-icons/gi";
 import { GiParrotHead } from "react-icons/gi";
 import { IoFish } from "react-icons/io5";
-import CategoryBox from "../CategoryBox";
+import CategoryBox from "../../../CategoryBox";
 import { usePathname, useSearchParams } from "next/navigation";
 import { MdPestControlRodent } from "react-icons/md";
 

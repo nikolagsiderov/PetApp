@@ -1,10 +1,10 @@
 "use client";
 
-import Container from "../Container";
-import Categories from "./Categories";
-import Logo from "./Logo";
+import Container from "../../Container";
+import Categories from "./petsitting/Categories";
+import Logo from "../Logo";
 import NavigationMenu from "./NavigationMenu";
-import Search from "./Search";
+import Search from "./petsitting/Search";
 import UserMenu from "./UserMenu";
 import { SafeUser } from "@/app/types";
 import { usePathname } from "next/navigation";

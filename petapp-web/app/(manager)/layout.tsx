@@ -1,17 +1,18 @@
+import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "../components/ClientOnly";
-import ManagerBottomNav from "../components/navbar/ManagerBottomNav";
-import ManagerNavbar from "../components/navbar/ManagerNavbar";
+import Sidebar from "../components/navbar/manage/Sidebar";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentUser = await getCurrentUser();
+
   return (
     <ClientOnly>
-      <ManagerNavbar />
+      <Sidebar username={currentUser?.name} />
       <div>{children}</div>
-      <ManagerBottomNav />
     </ClientOnly>
   );
 }
