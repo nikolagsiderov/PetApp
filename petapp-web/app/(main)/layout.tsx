@@ -3,8 +3,9 @@ import getCurrentUser from "../actions/getCurrentUser";
 import ClientOnly from "../components/ClientOnly";
 import LoginModal from "../components/modals/LoginModal";
 import RegisterModal from "../components/modals/RegisterModal";
-import BottomNav from "../components/navbar/BottomNav";
-import Navbar from "../components/navbar/Navbar";
+import BottomNav from "../components/navbar/main/BottomNav";
+import Navbar from "../components/navbar/main/Navbar";
+import Footer from "../components/footer/Footer";
 
 interface IParams {
   userId?: string;
@@ -30,6 +31,7 @@ export default async function RootLayout({
         hasUserAlreadyListed={userHasAlreadyListed}
       />
       <div>{children}</div>
+      <Footer />
       <BottomNav />
     </ClientOnly>
   );
