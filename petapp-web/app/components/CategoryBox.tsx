@@ -52,21 +52,21 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   return (
     <div
       onClick={handleClick}
-      className={`flex flex-col items-center justify-center gap-1 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
-        selected ? "border-b-neutral-800" : "border-transparent"
+      className={`flex flex-col items-center justify-center gap-1 p-3 border-b-2 hover:text-rose-500 transition cursor-pointer ${
+        selected ? "border-b-rose-500" : "border-transparent"
       }
-    ${selected ? "text-neutral-800" : "text-neutral-500"}`}
+    ${selected ? "text-rose-500" : "text-neutral-700"}`}
     >
       {Icon && <Icon size={26} />}
       {imageSrc && (
         <Avatar
           src={imageSrc}
-          roundedClass="rounded-lg"
-          width={50}
-          height={50}
+          roundedClass="rounded-none"
+          width={35}
+          height={35}
         />
       )}
-      <div className="font-medium text-sm -mt-2">{label}</div>
+      <div className="font-semibold -mt-1">{label}</div>
     </div>
   );
 };

@@ -14,37 +14,37 @@ export const categories = [
   {
     label: "Кучета",
     icon: FaDog,
-    imageSrc: "/images/dog.png",
+    imageSrc: "/vectors/dog.svg",
     description: "Тази обява се отнася за кучета.",
   },
   {
     label: "Котета",
     icon: FaCat,
-    imageSrc: "/images/cat.png",
+    imageSrc: "/vectors/cat.svg",
     description: "Тази обява се отнася за котки.",
   },
   {
     label: "Зайчета",
     icon: GiRabbit,
-    imageSrc: "/images/bunny.png",
+    imageSrc: "/vectors/bunny.svg",
     description: "Тази обява се отнася за зайци.",
   },
   {
     label: "Птици",
     icon: GiParrotHead,
-    imageSrc: "/images/parrot.png",
+    imageSrc: "/vectors/bird.svg",
     description: "Тази обява се отнася за птици.",
   },
   {
     label: "Рибки",
     icon: IoFish,
-    imageSrc: "/images/fish.png",
+    imageSrc: "/vectors/fish.svg",
     description: "Тази обява се отнася за риби.",
   },
   {
     label: "Гризачи",
     icon: MdPestControlRodent,
-    imageSrc: "/images/pig.png",
+    imageSrc: "/vectors/squirrel.svg",
     description: "Тази обява се отнася за гризачи.",
   },
 ];

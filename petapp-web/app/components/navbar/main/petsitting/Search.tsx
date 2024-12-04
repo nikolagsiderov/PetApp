@@ -54,10 +54,10 @@ const Search = () => {
       let diff = differenceInDays(end, start);
 
       if (diff === 0) {
-        diff = 1;
+        return `${++diff} ден`;
       }
 
-      return `${diff} Дни`;
+      return `${++diff} дни`;
     }
 
     return "Кога";
@@ -100,7 +100,7 @@ const Search = () => {
       return `${category}`;
     }
 
-    return "Домашен Любимец";
+    return "Домашен любимец";
   }, [category]);
 
   return (
