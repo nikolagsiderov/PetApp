@@ -31,7 +31,7 @@ const Footer = () => {
               <a
                 href="https://github.com/cholakadev"
                 target="blank"
-                className="bg-sky-950 text-white font-semibold py-1 px-2 rounded"
+                className="bg-sky-900 text-white font-semibold py-1 px-2 rounded"
               >
                 cholakadev
               </a>
