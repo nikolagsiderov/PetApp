@@ -114,7 +114,7 @@ const ReservationsTableRows = ({ request, index }: TableRowsProps) => {
       <td className="p-4">
         <span
           className={`px-2 py-1 text-xs font-semibold rounded text-white ${
-            request.approved ? "bg-emerald-500" : "bg-rose-500"
+            request.approved ? "bg-emerald-500" : "bg-amber-500"
           }`}
         >
           {request.approved ? (
