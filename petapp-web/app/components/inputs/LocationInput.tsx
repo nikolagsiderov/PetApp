@@ -7,7 +7,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useGooglePlacesPublicAddress from "@/app/hooks/useGooglePlacesPublicAddress";
+import parseGooglePlacesPublicAddress from "@/app/hooks/parseGooglePlacesPublicAddress";
 
 export type LocationValue = {
   address: string;
@@ -50,7 +50,10 @@ const LocationInput: React.FC<LocationInputProps> = ({ onChange }) => {
       const place = searchResult.getPlace();
 
       setPrivateAddress(place.formatted_address);
-      useGooglePlacesPublicAddress({ googlePlace: place, setPublicAddress });
+      parseGooglePlacesPublicAddress({ googlePlace: place, setPublicAddress });
+
+      console.log(privateAddress);
+      console.log(publicAddress);
       handleSelect();
     } else {
       toast.error("Моля въведете и изберете адрес.");
