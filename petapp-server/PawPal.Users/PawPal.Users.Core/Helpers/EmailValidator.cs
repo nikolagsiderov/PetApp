@@ -7,9 +7,7 @@ namespace PawPal.Users.Core.Helpers
         private readonly string _emailAddress;
 
         public EmailValidator(string emailAddress)
-        {
-            _emailAddress = emailAddress;
-        }
+            => _emailAddress = emailAddress;
 
         public bool IsValidEmailAddress()
         {
