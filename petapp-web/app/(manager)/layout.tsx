@@ -1,6 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "../components/ClientOnly";
 import Sidebar from "../components/navbar/manage/Sidebar";
+import { getReservationRequests } from "@/app/actions/reservations/getActions";
 
 export default async function RootLayout({
   children,
@@ -9,9 +10,14 @@ export default async function RootLayout({
 }>) {
   const currentUser = await getCurrentUser();
 
+  const reservationRequests = await getReservationRequests();
+  const awaitingApproval = reservationRequests.filter(
+    (request) => request.approved === false
+  );
+
   return (
     <ClientOnly>
-      <Sidebar currentUser={currentUser} />
+      <Sidebar currentUser={currentUser} requestsCount={awaitingApproval.length} />
       <div>{children}</div>
     </ClientOnly>
   );
