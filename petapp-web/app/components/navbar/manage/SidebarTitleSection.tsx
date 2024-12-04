@@ -1,20 +1,22 @@
 "use client";
 
 import { FiChevronDown } from "react-icons/fi";
-import SidebarLogo from "./SidebarLogo";
+import SidebarUserAvatar from "./SidebarUserAvatar";
 
 const SidebarTitleSection = ({
   open,
   username,
+  userImg,
 }: {
   open: boolean;
   username: string | null | undefined;
+  userImg: string | null | undefined;
 }) => {
   return (
     <div className="mb-3 border-b border-slate-300 pb-3">
       <div className="flex cursor-pointer items-center justify-between rounded-md transition-colors hover:bg-slate-100">
         <div className="flex items-center gap-2">
-          <SidebarLogo />
+          <SidebarUserAvatar userImg={userImg} />
           {open && (
             <div>
               <span className="block text-xs font-semibold">{username}</span>

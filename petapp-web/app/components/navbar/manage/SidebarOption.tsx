@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction } from "react";
 import { IconType } from "react-icons";
 
 const SidebarOption = ({
+  route,
   Icon,
   title,
   selected,
@@ -11,6 +13,7 @@ const SidebarOption = ({
   open,
   notifs,
 }: {
+  route: string;
   Icon: IconType;
   title: string;
   selected: string;
@@ -18,12 +21,21 @@ const SidebarOption = ({
   open: boolean;
   notifs?: number;
 }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    setSelected(title);
+    router.push(route);
+  };
+
   return (
     <button
-      onClick={() => setSelected(title)}
-      className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
+      onClick={() => handleClick()}
+      className={`relative flex h-10 w-full items-center ${
+        !open && "justify-center"
+      } rounded-md transition-colors ${
         selected === title
-          ? "bg-indigo-100 text-sky-950"
+          ? "bg-sky-900 text-white"
           : "text-slate-500 hover:bg-slate-100"
       }`}
     >
@@ -41,7 +53,13 @@ const SidebarOption = ({
       )}
 
       {notifs && open && (
-        <span className="absolute right-2 size-5 m-1 p-[0.1rem] rounded-full bg-sky-900 text-xs text-white">
+        <span
+          className={`absolute right-2 size-5 m-1 p-[0.1rem] rounded-full bg-sky-900 text-xs text-white ${
+            selected !== title
+              ? "bg-sky-900 text-white"
+              : "bg-white text-sky-900"
+          }`}
+        >
           {notifs}
         </span>
       )}

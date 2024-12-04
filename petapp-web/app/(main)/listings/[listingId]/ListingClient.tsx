@@ -66,16 +66,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
     return categories.find((items) => items.label === listing.category);
   }, [listing.category]);
 
-  const address = useMemo(() => {
-    const town = getByValue(listing.address.split(",")[1].trim());
-
-    if (town) {
-      return `${town.localName}, България`;
-    } else {
-      return "България";
-    }
-  }, [getByValue, listing.address]);
-
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
@@ -139,7 +129,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         <div className="flex flex-col gap-6">
           <ListingHead
             imageSrc={listing.imageSrc}
-            address={address}
+            address={listing.address}
             id={listing.id}
             currentUser={currentUser}
           />
@@ -179,7 +169,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             </div>
           </div>
           <ListingReviews reviews={reviews} />
-          <ListingMap listing={listing} address={address} />
+          <ListingMap listing={listing} />
         </div>
       </div>
     </MainContainer>

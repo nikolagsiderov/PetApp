@@ -3,17 +3,18 @@
 import React, { useState, useEffect } from "react";
 import {
   FiBarChart,
-  FiBell,
   FiHome,
   FiSettings,
   FiLayout,
+  FiTag,
 } from "react-icons/fi";
 import SidebarOption from "./SidebarOption";
 import SidebarTitleSection from "./SidebarTitleSection";
 import SidebarToggleClose from "./SidebarToggleClose";
 import SidebarReturn from "./SidebarReturn";
+import { SafeUser } from "@/app/types";
 
-const Sidebar = ({ username }: { username: string | null | undefined }) => {
+const Sidebar = ({ currentUser }: { currentUser: SafeUser | null }) => {
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
   const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("Начало");
@@ -29,7 +30,7 @@ const Sidebar = ({ username }: { username: string | null | undefined }) => {
     };
   }, []);
 
-  const isMobile = screenWidth <= 768;
+  const isMobile = screenWidth < 1024;
 
   useEffect(() => {
     if (isMobile) {
@@ -46,10 +47,15 @@ const Sidebar = ({ username }: { username: string | null | undefined }) => {
         width: open ? "225px" : "fit-content",
       }}
     >
-      <SidebarTitleSection open={open} username={username} />
+      <SidebarTitleSection
+        open={open}
+        username={currentUser?.name}
+        userImg={currentUser?.image}
+      />
 
       <div className="space-y-1">
         <SidebarOption
+          route="/manage"
           Icon={FiHome}
           title="Начало"
           selected={selected}
@@ -57,14 +63,16 @@ const Sidebar = ({ username }: { username: string | null | undefined }) => {
           open={open}
         />
         <SidebarOption
-          Icon={FiBell}
-          title="Чакащи заявки"
+          route="/manage/reservations"
+          Icon={FiTag}
+          title="Резервации"
           selected={selected}
           setSelected={setSelected}
           open={open}
           notifs={3}
         />
         <SidebarOption
+          route="/manage/listing"
           Icon={FiLayout}
           title="Моята обява"
           selected={selected}
@@ -72,6 +80,7 @@ const Sidebar = ({ username }: { username: string | null | undefined }) => {
           open={open}
         />
         <SidebarOption
+          route="/manage/statistics"
           Icon={FiBarChart}
           title="Статистика"
           selected={selected}
@@ -79,6 +88,7 @@ const Sidebar = ({ username }: { username: string | null | undefined }) => {
           open={open}
         />
         <SidebarOption
+          route="/manage/settings"
           Icon={FiSettings}
           title="Настройки"
           selected={selected}

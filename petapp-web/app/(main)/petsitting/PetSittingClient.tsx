@@ -24,20 +24,18 @@ const PetSittingClient: React.FC<PetSittingClientProps> = ({
 
   return (
     <MainContainer>
-      <div className="hidden lg:block right-20 fixed z-10 bottom-20 justify-center items-center">
+      <div className="hidden lg:block right-12 fixed z-10 bottom-16 justify-center items-center">
         <div
           onClick={toggleView}
-          className="cursor-pointer flex flex-row gap-1 justify-center items-center rounded-full hover:opacity-100 opacity-50 transition w-full bg-rose-500 font-light text-md p-3 text-white"
+          className="drop-shadow-lg cursor-pointer flex flex-row gap-1 justify-center items-center rounded-full hover:opacity-100 opacity-75 transition w-full bg-rose-500 font-light text-xs p-4 text-white"
         >
           {!mapView ? (
             <div className="flex flex-row justify-center items-center gap-2">
               <FaMapLocationDot size={20} className="fill-white" />
-              <div>Смени изглед към карта</div>
             </div>
           ) : (
             <div className="flex flex-row justify-center items-center gap-2">
               <FaListUl size={20} className="fill-white" />
-              <div>Смени изглед към списък</div>
             </div>
           )}
         </div>

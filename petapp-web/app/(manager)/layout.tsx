@@ -11,7 +11,7 @@ export default async function RootLayout({
 
   return (
     <ClientOnly>
-      <Sidebar username={currentUser?.name} />
+      <Sidebar currentUser={currentUser} />
       <div>{children}</div>
     </ClientOnly>
   );
