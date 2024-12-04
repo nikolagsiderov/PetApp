@@ -60,18 +60,19 @@ const Left: React.FC<LeftProps> = ({ listings }) => {
               <div key={listing.id}>
                 <MarkerF
                   icon={{
-                    url: "/images/white box.png",
-                    scaledSize: new google.maps.Size(60, 45),
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 10,
                   }}
                   position={{
                     lat: listing.lat + 0.001,
                     lng: listing.lng - 0.001,
                   }}
                   label={{
-                    text: listing.price.toFixed(2),
-                    color: "black",
-                    fontSize: "15px",
-                    fontWeight: "bold",
+                    text: `${listing.price.toFixed(2)} лв`,
+                    color: "white",
+                    fontSize: "14px",
+                    className:
+                      "bg-rose-500 font-bold py-2 px-3 rounded-full cursor-pointer",
                   }}
                   onClick={() => handleMapSelect(listing.id)}
                 ></MarkerF>

@@ -19,16 +19,23 @@ const Footer = () => {
               Политика за поверителност и бисквитки
             </div>
             <div className="font-black">·</div>
-            <a
-              href="https://nikolagsiderov.dev/"
-              target="blank"
-              className="flex flex-row gap-1 overflow-hidden"
-            >
+            <div className="flex flex-row gap-1 overflow-hidden">
               <div className="mt-1">Изработка и дизайн: </div>
-              <div className="bg-rose-500 text-white font-semibold py-1 px-2 rounded">
+              <a
+                href="https://nikolagsiderov.dev/"
+                target="blank"
+                className="bg-rose-500 text-white font-semibold py-1 px-2 rounded"
+              >
                 nikolagsiderov.dev
-              </div>
-            </a>
+              </a>
+              <a
+                href="https://github.com/cholakadev"
+                target="blank"
+                className="bg-sky-950 text-white font-semibold py-1 px-2 rounded"
+              >
+                cholakadev
+              </a>
+            </div>
             <div className="font-black">·</div>
             <div className="flex flex-row overflow-hidden justify-center items-center gap-2">
               <div>Последвай ни в социалните мрежи</div>
